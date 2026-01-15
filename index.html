@@ -12,20 +12,19 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
+            font-family: 'Courier New', monospace;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #0a0a0a;
         }
 
         header {
-            background: #fff;
-            border-bottom: 1px solid #e0e0e0;
+            background: #000;
+            border-bottom: 2px solid #1a3a52;
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .header-container {
@@ -42,9 +41,16 @@
         }
 
         h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1a1a1a;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffd700;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        h1::before {
+            content: "$ ";
+            color: #1a3a52;
         }
 
         nav ul {
@@ -56,13 +62,24 @@
 
         nav a {
             text-decoration: none;
-            color: #555;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            color: #6b9bc3;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: monospace;
         }
 
         nav a:hover {
-            color: #0066cc;
+            color: #ffd700;
+        }
+
+        nav a::before {
+            content: "[";
+            color: #1a3a52;
+        }
+
+        nav a::after {
+            content: "]";
+            color: #1a3a52;
         }
 
         .main-container {
@@ -75,44 +92,57 @@
         }
 
         .left-column, .right-column {
-            background: #fff;
+            background: #0f0f0f;
             padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #1a3a52;
+            border-radius: 0;
         }
 
         .subtitle {
-            font-size: 1.8rem;
-            color: #2c3e50;
+            font-size: 1.5rem;
+            color: #ffd700;
             margin-bottom: 1.5rem;
             font-weight: 400;
+            font-family: monospace;
+        }
+
+        .subtitle::before {
+            content: "# ";
+            color: #1a3a52;
         }
 
         .pronunciation {
-            color: #666;
-            font-size: 1.05rem;
+            color: #808080;
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
+            font-family: monospace;
         }
 
         .village-note {
-            color: #888;
+            color: #606060;
             font-style: italic;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 1.5rem;
+            font-family: monospace;
         }
 
         .intro-box {
-            background: #f0f7ff;
+            background: #1a1a1a;
             padding: 1.5rem;
-            border-left: 4px solid #0066cc;
+            border-left: 3px solid #ffd700;
             margin: 1.5rem 0;
             font-style: italic;
-            color: #555;
+            color: #a0a0a0;
+            font-family: monospace;
+            font-size: 0.9rem;
         }
 
         .bio-text {
             margin: 1.5rem 0;
             line-height: 1.8;
+            color: #c0c0c0;
+            font-family: monospace;
+            font-size: 0.9rem;
         }
 
         .section {
@@ -120,17 +150,29 @@
         }
 
         .section h2 {
-            font-size: 1.4rem;
-            color: #2c3e50;
+            font-size: 1.2rem;
+            color: #6b9bc3;
             margin-bottom: 1.2rem;
-            font-weight: 600;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        .section h2::before {
+            content: "## ";
+            color: #1a3a52;
         }
 
         .section h3 {
-            font-size: 1.1rem;
-            color: #2c3e50;
+            font-size: 1rem;
+            color: #6b9bc3;
             margin: 1.5rem 0 1rem;
-            font-weight: 600;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        .section h3::before {
+            content: "### ";
+            color: #1a3a52;
         }
 
         .affiliations {
@@ -142,30 +184,35 @@
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: #c0c0c0;
+            font-family: monospace;
         }
 
         .affiliations li:before {
-            content: "•";
+            content: ">";
             position: absolute;
             left: 0;
-            color: #0066cc;
+            color: #ffd700;
             font-weight: bold;
         }
 
         .affiliations a, .section a {
-            color: #0066cc;
+            color: #6b9bc3;
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
         }
 
         .affiliations a:hover, .section a:hover {
-            text-decoration: underline;
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
         }
 
         .location-box {
-            background: #f8f9fa;
+            background: #1a1a1a;
             padding: 1.5rem;
-            border-radius: 6px;
+            border: 1px solid #1a3a52;
             margin: 1.5rem 0;
         }
 
@@ -175,87 +222,90 @@
 
         .sardinia-info {
             margin-top: 1rem;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             line-height: 1.6;
-            color: #555;
-        }
-
-        /* Research Column Styles */
-        .research-intro {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-            line-height: 1.7;
+            color: #a0a0a0;
+            font-family: monospace;
         }
 
         .research-interests {
-            background: #fff9e6;
+            background: #1a1a1a;
             padding: 1.5rem;
-            border-left: 4px solid #ffc107;
+            border-left: 3px solid #ffd700;
             margin: 1.5rem 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.7;
+            font-family: monospace;
+            color: #c0c0c0;
         }
 
         .paper-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-family: monospace;
         }
 
         .paper-table th {
-            background: #f0f0f0;
+            background: #1a1a1a;
             padding: 0.75rem;
             text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid #ddd;
+            font-weight: 400;
+            border-bottom: 2px solid #1a3a52;
+            color: #ffd700;
         }
 
         .paper-table td {
             padding: 0.75rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #1a3a52;
             vertical-align: top;
+            color: #c0c0c0;
         }
 
         .paper-table tr:hover {
-            background: #fafafa;
+            background: #1a1a1a;
         }
 
         .project-item {
             margin: 1rem 0;
             padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 6px;
+            background: #1a1a1a;
+            border-left: 2px solid #1a3a52;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #c0c0c0;
         }
 
         .project-item strong {
-            color: #2c3e50;
+            color: #6b9bc3;
         }
 
         .thesis-item {
             margin: 1rem 0;
             padding-left: 1.5rem;
-            border-left: 3px solid #e0e0e0;
+            border-left: 2px solid #1a3a52;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #c0c0c0;
         }
 
         .thesis-item strong {
-            color: #2c3e50;
+            color: #6b9bc3;
         }
 
         hr {
             border: none;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid #1a3a52;
             margin: 2rem 0;
         }
 
         footer {
-            background: #2c3e50;
-            color: #fff;
+            background: #000;
+            color: #808080;
             padding: 2rem 0;
             margin-top: 3rem;
+            border-top: 2px solid #1a3a52;
         }
 
         .footer-content {
@@ -271,18 +321,30 @@
 
         .quote {
             font-style: italic;
-            font-size: 1.05rem;
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: #6b9bc3;
         }
 
         .social-links a {
-            color: #fff;
+            color: #6b9bc3;
             text-decoration: none;
             margin-left: 1.5rem;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            font-family: monospace;
+            font-size: 0.9rem;
         }
 
         .social-links a:hover {
-            opacity: 0.7;
+            color: #ffd700;
+        }
+
+        .social-links a::before {
+            content: "[ ";
+        }
+
+        .social-links a::after {
+            content: " ]";
         }
 
         @media (max-width: 1024px) {
@@ -321,15 +383,34 @@
         }
 
         strong {
-            color: #2c3e50;
+            color: #6b9bc3;
         }
 
         em {
-            color: #555;
+            color: #ffd700;
         }
 
-        .emoji {
-            font-size: 1.2em;
+        h4 {
+            color: #808080;
+            font-family: monospace;
+            font-weight: 400;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a3a52;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b9bc3;
         }
     </style>
 </head>
@@ -337,14 +418,14 @@
     <header>
         <div class="header-container">
             <div class="header-content">
-                <h1>Federico Atzori, Ph.D.</h1>
+                <h1>federico_atzori.phd</h1>
                 <nav>
                     <ul>
-                        <li><a href="#research">Research</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#teaching">Teaching</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#otree">oTree Code</a></li>
+                        <li><a href="#research">research</a></li>
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#teaching">teaching</a></li>
+                        <li><a href="#events">events</a></li>
+                        <li><a href="#otree">otree</a></li>
                     </ul>
                 </nav>
             </div>
@@ -354,15 +435,14 @@
     <div class="main-container">
         <!-- Left Column: About Me -->
         <div class="left-column">
-            <h2 class="subtitle">Behavioral Science & Economics</h2>
+            <h2 class="subtitle">behavioral_science & economics</h2>
             
-            <p class="pronunciation">The pronunciation of my name is…..<br>
-            /feˈdeːriko aˈzoːri/</p>
+            <p class="pronunciation">pronunciation: /feˈdeːriko aˈzoːri/</p>
             
-            <p class="village-note">The surname refers to an ancient village in the Judicate of Cagliari.</p>
+            <p class="village-note">*surname refers to an ancient village in the Judicate of Cagliari</p>
 
             <div class="intro-box">
-                An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment.
+                "An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment."
             </div>
 
             <div class="bio-text">
@@ -370,86 +450,90 @@
             </div>
 
             <div class="section">
-                <h2><strong>Current Affiliation(s)</strong></h2>
+                <h2>current_affiliations</h2>
                 <ul class="affiliations">
-                    <li>Postdoctoral Fellow at the <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a>, Sapienza University.</li>
-                    <li>Post-Doctoral Fellow at the <a href="https://web.unica.it/unica/en/dip_scienzeecoaziend.page" target="_blank">Department of Economics and Business Sciences</a>, University of Cagliari.</li>
-                    <li>Post-Doctoral Fellow at <a href="https://crenos.unica.it/" target="_blank">Centre for North South Economic Research, University of Cagliari and Sassari</a>.</li>
+                    <li>Postdoctoral Fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a>, Sapienza University</li>
+                    <li>Post-Doctoral Fellow at <a href="https://web.unica.it/unica/en/dip_scienzeecoaziend.page" target="_blank">Dept. of Economics and Business Sciences</a>, University of Cagliari</li>
+                    <li>Post-Doctoral Fellow at <a href="https://crenos.unica.it/" target="_blank">CRENoS</a>, University of Cagliari and Sassari</li>
                 </ul>
             </div>
 
             <hr>
 
             <div class="location-box">
-                <h3>Where do I come from?</h3>
-                <a href="https://earth.google.com/web/search/cagliari" target="_blank" style="color: #0066cc;">Check it on Google Earth →</a>
+                <h3>origin.location</h3>
+                <a href="https://earth.google.com/web/search/cagliari" target="_blank" style="color: #6b9bc3;">→ google_earth</a>
                 
                 <div class="sardinia-info">
-                    <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) is the second-largest island in the Mediterranean Sea, after Sicily. It has been inhabited by humans since the end of the Paleolithic era, approximately 20,000 to 10,000 years ago, and for some, it is the mythical <em>Atlantis</em>.</p>
+                    <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
                 </div>
             </div>
         </div>
 
         <!-- Right Column: Research -->
         <div class="right-column" id="research">
-            <h2 class="subtitle">Research</h2>
+            <h2 class="subtitle">research.output</h2>
 
             <div class="research-interests">
-                <strong>Research Interests</strong><br><br>
-                My research interests span several fields. In behavioral and experimental economics, I focus on social norms, pro-social behaviors, risk attitudes, the civil economy, gender, and religion. In microeconomics, I am particularly interested in game theory. I also explore themes in sociology, especially economic sociology, with attention to embeddedness, social capital, and the informal economy. Finally, my work draws on psychology, engaging with economic psychology as well as the psychology of groups and organizations.
+                <strong>research_interests:</strong><br><br>
+                Behavioral & experimental economics → social norms, pro-social behaviors, risk attitudes, civil economy, gender, religion<br>
+                Microeconomics → game theory<br>
+                Sociology → economic sociology, embeddedness, social capital, informal economy<br>
+                Psychology → economic psychology, groups & organizations
             </div>
 
             <div class="section">
-                <h3><span class="emoji">📝</span> Publications</h3>
-                
-                <h4 style="margin: 1.5rem 0 1rem; color: #555; font-size: 1rem;"><em>Working papers</em> (from newest to oldest)</h4>
+                <h3>publications.working_papers</h3>
                 
                 <table class="paper-table">
                     <thead>
                         <tr>
-                            <th style="width: 50%;">Title</th>
-                            <th style="width: 30%;">Author(s) & Year</th>
-                            <th style="width: 20%;">Repository</th>
+                            <th>title</th>
+                            <th>authors</th>
+                            <th>repo</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="https://crenos.unica.it/crenos/publications/creative-minds-age-ai-personality-traits-ai-perception-and-creativity-tasks" target="_blank"><em>Creative Minds in the Age of AI. Personality Traits, AI Perception, and Creativity Tasks</em></a></td>
+                            <td><a href="https://crenos.unica.it/crenos/publications/creative-minds-age-ai-personality-traits-ai-perception-and-creativity-tasks" target="_blank"><em>Creative Minds in the Age of AI</em></a></td>
                             <td>Atzori F., Corazzini L., Guarnieri A. (2025)</td>
-                            <td>CRENoS Working Paper</td>
+                            <td>CRENoS</td>
                         </tr>
                         <tr>
-                            <td><a href="https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5350667" target="_blank"><em>When Giving Justifies Gambling: Theory and Experimental Evidence on Prosocial Risk-taking</em></a></td>
-                            <td>Ballicu, G., Atzori, F., & Pelligra, V. (2025)</td>
-                            <td>SSRN 5350667</td>
+                            <td><a href="https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5350667" target="_blank"><em>When Giving Justifies Gambling</em></a></td>
+                            <td>Ballicu G., Atzori F., Pelligra V. (2025)</td>
+                            <td>SSRN</td>
                         </tr>
                         <tr>
-                            <td><a href="https://grins.it/output/identifying-electricity-consumption-patterns-using-high-frequency-data-volatility-and-self" target="_blank"><em>Identifying Electricity Consumption Patterns by Using High-Frequency Data: Volatility and Self-Organizing Maps</em></a></td>
-                            <td>Atzori F., Corazzini L., Guerzoni M. & Mantovani M. (2025)</td>
-                            <td>GRINS Foundation</td>
+                            <td><a href="https://grins.it/output/identifying-electricity-consumption-patterns-using-high-frequency-data-volatility-and-self" target="_blank"><em>Identifying Electricity Consumption Patterns</em></a></td>
+                            <td>Atzori F., Corazzini L., Guerzoni M., Mantovani M. (2025)</td>
+                            <td>GRINS</td>
                         </tr>
                         <tr>
-                            <td><a href="https://crenos.unica.it/crenos/publications/under-big-gods%E2%80%99-eyes-impact-religious-beliefs-altruistic-punishment-during-covid-19" target="_blank"><em>Under Big Gods' Eyes. The Impact of Religious Beliefs on Altruistic Punishment During COVID-19 Pandemic</em></a></td>
-                            <td>Atzori, F., Ballicu G. & Pelligra V. (2025)</td>
-                            <td>CRENoS Working Paper</td>
+                            <td><a href="https://crenos.unica.it/crenos/publications/under-big-gods%E2%80%99-eyes-impact-religious-beliefs-altruistic-punishment-during-covid-19" target="_blank"><em>Under Big Gods' Eyes</em></a></td>
+                            <td>Atzori F., Ballicu G., Pelligra V. (2025)</td>
+                            <td>CRENoS</td>
                         </tr>
                         <tr>
-                            <td><a href="https://econpapers.repec.org/paper/cnscnscwp/202407.htm" target="_blank"><em>Framed Norms. The effect of choice-belief information on tax compliance</em></a></td>
-                            <td>Atzori, F. & Pelligra, V. (2024)</td>
-                            <td>CRENoS Working Paper</td>
+                            <td><a href="https://econpapers.repec.org/paper/cnscnscwp/202407.htm" target="_blank"><em>Framed Norms</em></a></td>
+                            <td>Atzori F., Pelligra V. (2024)</td>
+                            <td>CRENoS</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
 
-            
+
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="quote">
-                "I'm here to play games."<br>
-                <span style="font-size: 0.9rem; opacity: 0.8;">— G. Charness</span>
+                "I'm here to play games." — G. Charness
             </div>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
             </div>
         </div>
     </footer>
