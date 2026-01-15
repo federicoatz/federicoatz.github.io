@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oTree Code - Federico Atzori, Ph.D.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #0a0a0a;
+        }
+
+        header {
+            background: #000;
+            border-bottom: 2px solid #1a3a52;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffd700;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        h1::before {
+            content: "$ ";
+            color: #1a3a52;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6b9bc3;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: monospace;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a::before {
+            content: "[";
+            color: #1a3a52;
+        }
+
+        nav a::after {
+            content: "]";
+            color: #1a3a52;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-box {
+            background: #0f0f0f;
+            padding: 2.5rem;
+            border: 1px solid #1a3a52;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        h2::before {
+            content: "# ";
+            color: #1a3a52;
+        }
+
+        .intro-text {
+            color: #c0c0c0;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .citation {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-left: 3px solid #1a3a52;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            color: #808080;
+            font-style: italic;
+        }
+
+        .code-card {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #1a1a1a;
+            border-left: 4px solid #ffd700;
+        }
+
+        .code-title {
+            color: #6b9bc3;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .code-description {
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .code-image {
+            margin: 1rem 0;
+            padding: 3rem;
+            background: #252525;
+            border: 1px solid #1a3a52;
+            text-align: center;
+            color: #606060;
+            font-size: 0.85rem;
+        }
+
+        .code-link {
+            display: inline-block;
+            color: #ffd700;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .code-link:hover {
+            border-bottom: 1px solid #ffd700;
+        }
+
+        .code-link::after {
+            content: " →";
+        }
+
+        footer {
+            background: #000;
+            color: #808080;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid #1a3a52;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: #6b9bc3;
+        }
+
+        .social-links a {
+            color: #6b9bc3;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: all 0.3s;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        .social-links a::before {
+            content: "[ ";
+        }
+
+        .social-links a::after {
+            content: " ]";
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-box {
+                padding: 1.5rem;
+            }
+
+            .code-card {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links a {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <h1>federico_atzori.phd</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><a href="about.html">about</a></li>
+                        <li><a href="teaching.html">teaching</a></li>
+                        <li><a href="events.html">events</a></li>
+                        <li><a href="otree.html">otree</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-box">
+            <h2>otree.code_repository</h2>
+            
+            <p class="intro-text">In this page you can find some oTree* Code for Experimental Economics games.</p>
+
+            <div class="citation">
+                * Chen, D. L., Schonger, M., & Wickens, C. (2016). oTree—An open-source platform for laboratory, online, and field experiments. Journal of Behavioral and Experimental Finance, 9, 88-97.
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Norm Following Task</div>
+                
+                <div class="code-image">
+                    [screenshot: presentation of the rule-following task]
+                </div>
+
+                <div class="code-description">
+                    "Norm Following Task" for oTree Lite based on [Kimbrough, E. O., & Vostroknutov, A. (2018)] implemented for oTree v>5.
+                </div>
+
+                <a href="https://github.com/federicoatz/NFT" target="_blank" class="code-link">Learn more</a>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">Optimism Task</div>
+                
+                <div class="code-image">
+                    [screenshot: optimism task interface]
+                </div>
+
+                <div class="code-description">
+                    Optimism Task for oTree Lite based on [Corazzini, L., Filippin, A., & Vanin, P. (2015)] implemented for oTree v>5.
+                </div>
+
+                <a href="https://github.com/federicoatz/OPT" target="_blank" class="code-link">Learn more</a>
+            </div>
+
+            <div class="code-card">
+                <div class="code-title">StairCase Lottery</div>
+                
+                <div class="code-image">
+                    [screenshot: staircase lottery interface]
+                </div>
+
+                <div class="code-description">
+                    'Staircase' Risk Elicitation Method for oTree Lite based on https://github.com/felixholzmeister/icl but implemented for oTree v>5.
+                </div>
+
+                <a href="https://github.com/federicoatz/Staircase_oTreeLite" target="_blank" class="code-link">Learn more</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="quote">
+                "I'm here to play games." — G. Charness
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

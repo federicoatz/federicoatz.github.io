@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Federico Atzori, Ph.D.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #0a0a0a;
+        }
+
+        header {
+            background: #000;
+            border-bottom: 2px solid #1a3a52;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffd700;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        h1::before {
+            content: "$ ";
+            color: #1a3a52;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6b9bc3;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: monospace;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a::before {
+            content: "[";
+            color: #1a3a52;
+        }
+
+        nav a::after {
+            content: "]";
+            color: #1a3a52;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-box {
+            background: #0f0f0f;
+            padding: 2.5rem;
+            border: 1px solid #1a3a52;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        h2::before {
+            content: "# ";
+            color: #1a3a52;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #6b9bc3;
+            margin: 2rem 0 1rem;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        h3::before {
+            content: "## ";
+            color: #1a3a52;
+        }
+
+        .job-entry {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: #1a1a1a;
+            border-left: 3px solid #ffd700;
+        }
+
+        .job-title {
+            color: #6b9bc3;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .job-date {
+            color: #808080;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-desc {
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .education-entry {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #1a1a1a;
+            border-left: 2px solid #1a3a52;
+        }
+
+        .conference-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .conference-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: #c0c0c0;
+        }
+
+        .conference-list li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        .year-section {
+            margin: 2rem 0;
+        }
+
+        .year-title {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+
+        a {
+            color: #6b9bc3;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #1a3a52;
+            margin: 2rem 0;
+        }
+
+        footer {
+            background: #000;
+            color: #808080;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid #1a3a52;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: #6b9bc3;
+        }
+
+        .social-links a {
+            color: #6b9bc3;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: all 0.3s;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        .social-links a::before {
+            content: "[ ";
+        }
+
+        .social-links a::after {
+            content: " ]";
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-box {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links a {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <h1>federico_atzori.phd</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><a href="about.html">about</a></li>
+                        <li><a href="teaching.html">teaching</a></li>
+                        <li><a href="events.html">events</a></li>
+                        <li><a href="otree.html">otree</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-box">
+            <h2>more_about.me</h2>
+            <p style="color: #c0c0c0; margin-bottom: 1rem;">Check out some of my experiences. Check my <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">LinkedIn profile</a> and connect.</p>
+
+            <hr>
+
+            <h3>academia.positions</h3>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Post-Doc Researcher</div>
+                <div class="job-date">December 2025 – Ongoing | Sapienza University of Rome</div>
+                <div class="job-desc">Development of software for educational experiments and provision of technical support for the design, implementation, and management of digital learning activities. Collaborating on educational innovation and experimentation in digital education.<br>
+                PI: Prof. <a href="https://sites.google.com/uniroma1.it/lucapanaccione-eng/home" target="_blank">Luca Panaccione</a></div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Research Assistant</div>
+                <div class="job-date">April 2024 – Ongoing | University of Cagliari</div>
+                <div class="job-desc">An experimental investigation of the Italian North-South divide in trust, cooperation, and redistributive preferences.<br>
+                PI: Prof. <a href="https://www.wbs.ac.uk/about/person/andrea-isoni/" target="_blank">Andrea Isoni</a></div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Post-Doc Researcher</div>
+                <div class="job-date">December 2025 – January 2026 | LIUC Cattaneo University</div>
+                <div class="job-desc">Research activities within the project, Biases in Markets for Experts: Theory and Experiments.</div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Post-Doc Researcher</div>
+                <div class="job-date">October 2024 – September 2025 | University of Milan – Bicocca</div>
+                <div class="job-desc">Reducing emissions from electricity consumption through tailored behavioral interventions: a randomized controlled trial in the field (Programme GRINS‐Growing Resilient, Inclusive and Sustainable).<br>
+                PI: Prof. <a href="https://sites.google.com/site/lucacorazzini1/home" target="_blank">Luca Corazzini</a></div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Assistant Researcher</div>
+                <div class="job-date">October 2020 – April 2021 | University of Cagliari</div>
+                <div class="job-desc">Research on organizational collectivism, Human Resource Management.<br>
+                Supervisor: <a href="https://www.unica.it/unica/it/ateneo_s07_ss01.page?contentId=SHD30427" target="_blank">Prof. Barbara Barbieri</a></div>
+            </div>
+
+            <h3>guest.experiences</h3>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Visiting Researcher</div>
+                <div class="job-date">September 2025 – December 2025 | Sapienza University of Rome</div>
+                <div class="job-desc">Host: <a href="https://giuseppeattanasi.wixsite.com/index" target="_blank">Prof. Giuseppe Attanasi</a></div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Visiting Researcher</div>
+                <div class="job-date">February 2025 – March 2025 | The University of Chicago</div>
+                <div class="job-desc">Host: <a href="https://voices.uchicago.edu/jlist/" target="_blank">Prof. Dr. John List</a></div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Visiting Ph.D. Student and Researcher</div>
+                <div class="job-date">August 2023 – December 2023 | Tilburg University</div>
+                <div class="job-desc">Host: <a href="https://sites.google.com/site/jjmpotters/home" target="_blank">Prof. Dr. Jan Potters</a></div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">👨‍💻 Visiting Ph.D. Student and Researcher</div>
+                <div class="job-date">October 2022 – January 2023 | Tilburg University</div>
+                <div class="job-desc">Host: <a href="https://sites.google.com/site/jjmpotters/home" target="_blank">Prof. Dr. Jan Potters</a></div>
+            </div>
+
+            <hr>
+
+            <h3>education.degrees</h3>
+
+            <div class="education-entry">
+                <strong style="color: #6b9bc3;">🎓 Ph.D. Degree</strong> (January 2025)<br>
+                Economics & Business, University of Cagliari<br>
+                Supervisor: <a href="https://vittoriopelligra.wordpress.com/about/" target="_blank">Prof. Vittorio Pelligra</a>
+            </div>
+
+            <div class="education-entry">
+                <strong style="color: #6b9bc3;">🎓 Master's Degree</strong> (July 2021)<br>
+                Public Administration Sciences, University of Cagliari
+            </div>
+
+            <div class="education-entry">
+                <strong style="color: #6b9bc3;">🎓 Bachelor's Degree</strong> (September 2015)<br>
+                Political Sciences, University of Cagliari
+            </div>
+
+            <hr>
+
+            <h3>conferences.past</h3>
+
+            <div class="year-section">
+                <div class="year-title">→ 2025</div>
+                <ul class="conference-list">
+                    <li>14th meeting BEEN, Cagliari (organizer)</li>
+                    <li>Summer School & Workshop on Experimetrics & Behavioral Economics, 3rd Ed., Soleto (organizer, speaker)</li>
+                    <li>13th meeting BEEN, Bologna (auditor)</li>
+                    <li>Civil Economy: an Old-New Paradigm, Rome (speaker)</li>
+                </ul>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">→ 2024</div>
+                <ul class="conference-list">
+                    <li>12th meeting BEEN, Turin (speaker)</li>
+                    <li>1st Summer School in Experimental and Behavioral Economics, Crete (poster)</li>
+                    <li>Implementing Experimental Designs, Leicester (participant)</li>
+                    <li>Summer School & Workshop on Experimetrics, Soleto (organizer, speaker)</li>
+                    <li>3rd Summer School of Computational and Experimental Economics, Barcelona (participant)</li>
+                    <li>SEET 2024, Malaga (speaker)</li>
+                </ul>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">→ 2023</div>
+                <ul class="conference-list">
+                    <li>TIBER symposium, Tilburg (speaker)</li>
+                    <li>Summer School & Workshop on Experimetrics, Soleto (participant, speaker)</li>
+                    <li>2023 ESA World Meeting, Lyon (speaker)</li>
+                </ul>
+            </div>
+
+            <div class="year-section">
+                <div class="year-title">→ 2022</div>
+                <ul class="conference-list">
+                    <li>1st International BPP Conference, London (participant)</li>
+                    <li>Sapienza Economics Ph.D. Summer Meeting, Rome (speaker)</li>
+                    <li>European ESA Meeting, Bologna (participant)</li>
+                    <li>CIMEO Workshop in Experimental Economics, Rome (participant)</li>
+                    <li>EDUC research seminar on European Union Studies, Cagliari (speaker)</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h3>journey.before_academia</h3>
+
+            <div class="job-entry">
+                <div class="job-title">Social Change School</div>
+                <div class="job-date">2014 – 2020</div>
+                <div class="job-desc">
+                    Training Program Coordinator (Fundraising Management Master, Social Business & Social Innovation Master)<br>
+                    Marketing & Social Media Coordinator (2017-2019)<br>
+                    Marketing & Social Media Officer (2015-2017)
+                </div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">Bridge for Billions</div>
+                <div class="job-date">2018 – 2019</div>
+                <div class="job-desc">Business Mentor</div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">Nite Shuttle</div>
+                <div class="job-date">2015 – 2017</div>
+                <div class="job-desc">Start-Up CoFounder. Private transfer service for events in Cagliari. Safe rides home after events.</div>
+            </div>
+
+            <div class="job-entry">
+                <div class="job-title">Calaris Social Media</div>
+                <div class="job-date">2014 – 2016</div>
+                <div class="job-desc">Founder. IT and digital consulting company for Sardinian SMEs.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="quote">
+                "I'm here to play games." — G. Charness
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
