@@ -114,15 +114,40 @@
         }
 
         .event-card {
-            margin: 2rem 0;
-            padding: 2rem;
+            margin: 0;
+            padding: 1.5rem;
             background: #1a1a1a;
-            border-left: 4px solid #ffd700;
+            border: 1px solid #1a3a52;
+            transition: all 0.3s;
+        }
+
+        .event-card:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 1024px) {
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .event-title {
             color: #6b9bc3;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
@@ -151,13 +176,13 @@
         }
 
         .image-placeholder {
-            margin: 1rem 0;
-            padding: 3rem;
+            margin: 0 0 1rem 0;
+            padding: 2rem;
             background: #252525;
             border: 1px solid #1a3a52;
             text-align: center;
             color: #606060;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
         }
 
         hr {
@@ -271,52 +296,50 @@
             
             <p class="intro-text">Here you will find information on the events I co-organize.</p>
 
-            <hr>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="image-placeholder">
+                        [event poster]
+                    </div>
+                    <div class="event-title">
+                        <a href="https://sites.unica.it/beencagliari/" target="_blank">14th BEEN meeting</a>
+                    </div>
+                    <div class="event-date">→ 25-26 Sep, 2025</div>
+                    <div class="event-location">University of Cagliari (ITA)</div>
+                </div>
 
-            <div class="event-card">
-                <div class="image-placeholder">
-                    [event poster placeholder]
+                <div class="event-card">
+                    <div class="image-placeholder">
+                        [summer school]
+                    </div>
+                    <div class="event-title">
+                        <a href="https://sites.google.com/a/uniroma1.it/cimeo/summer-schools/soleto-2025" target="_blank">Summer School - 3rd Ed.</a>
+                    </div>
+                    <div class="event-date">→ 19-24 Jul, 2025</div>
+                    <div class="event-location">Soleto (ITA)</div>
                 </div>
-                <div class="event-title">
-                    <a href="https://sites.unica.it/beencagliari/" target="_blank">14th Behavioral and Experimental Economics Network (BEEN) meeting</a>
-                </div>
-                <div class="event-date">→ 25-26th September, 2025</div>
-                <div class="event-location">University of Cagliari (ITA)</div>
-            </div>
 
-            <div class="event-card">
-                <div class="image-placeholder">
-                    [summer school poster placeholder]
+                <div class="event-card">
+                    <div class="image-placeholder">
+                        [workshop]
+                    </div>
+                    <div class="event-title">
+                        UniCa C-BECSS Workshop
+                    </div>
+                    <div class="event-date">→ 28 Jan, 2025</div>
+                    <div class="event-location">University of Cagliari (ITA)</div>
                 </div>
-                <div class="event-title">
-                    <a href="https://sites.google.com/a/uniroma1.it/cimeo/summer-schools/soleto-2025" target="_blank">Summer School & Workshop on Experimetrics & Behavioral Economics - 3rd Edition</a>
-                </div>
-                <div class="event-date">→ 19th-24th July, 2025</div>
-                <div class="event-location">Soleto (ITA)</div>
-            </div>
 
-            <hr>
-
-            <div class="event-card">
-                <div class="image-placeholder">
-                    [workshop photo placeholder]
+                <div class="event-card">
+                    <div class="image-placeholder">
+                        [summer school]
+                    </div>
+                    <div class="event-title">
+                        <a href="https://sites.google.com/a/uniroma1.it/cimeo/summer-schools/soleto-2024" target="_blank">Summer School - 2nd Ed.</a>
+                    </div>
+                    <div class="event-date">→ 21-27 Jul, 2024</div>
+                    <div class="event-location">Soleto (ITA)</div>
                 </div>
-                <div class="event-title">
-                    UniCa C-BECSS, Behavioral and Experimental Economics Workshop
-                </div>
-                <div class="event-date">→ 28th January, 2025</div>
-                <div class="event-location">University of Cagliari (ITA)</div>
-            </div>
-
-            <div class="event-card">
-                <div class="image-placeholder">
-                    [summer school photo placeholder]
-                </div>
-                <div class="event-title">
-                    <a href="https://sites.google.com/a/uniroma1.it/cimeo/summer-schools/soleto-2024" target="_blank">Summer School & Workshop on Experimetrics & Behavioral Economics - 2nd Edition</a>
-                </div>
-                <div class="event-date">→ 21st – 27th July, 2024</div>
-                <div class="event-location">Soleto (ITA)</div>
             </div>
         </div>
     </div>
