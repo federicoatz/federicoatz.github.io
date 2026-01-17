@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Federico Atzori, Ph.D.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #0a0a0a;
+        }
+
+        header {
+            background: #000;
+            border-bottom: 2px solid #1a3a52;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffd700;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        h1::before {
+            content: "$ ";
+            color: #1a3a52;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6b9bc3;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: monospace;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a::before {
+            content: "[";
+            color: #1a3a52;
+        }
+
+        nav a::after {
+            content: "]";
+            color: #1a3a52;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        h2::before {
+            content: "# ";
+            color: #1a3a52;
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #1a3a52;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline-item.left {
+            justify-content: flex-end;
+            padding-right: calc(50% + 3rem);
+        }
+
+        .timeline-item.right {
+            justify-content: flex-start;
+            padding-left: calc(50% + 3rem);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: #ffd700;
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+            z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .timeline-dot:hover {
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 0 20px #ffd700;
+        }
+
+        .timeline-card {
+            background: #1a1a1a;
+            border: 1px solid #1a3a52;
+            padding: 1.5rem;
+            max-width: 400px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .timeline-card:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .timeline-year {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            color: #6b9bc3;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: #c0c0c0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .timeline-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #1a3a52;
+            color: #6b9bc3;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 3px;
+        }
+
+        /* Heatmap Styles */
+        .heatmap-container {
+            background: #0f0f0f;
+            border: 1px solid #1a3a52;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .world-map {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            background: #1a1a1a;
+            border: 1px solid #1a3a52;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ffd700;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .map-marker:hover {
+            width: 20px;
+            height: 20px;
+            background: #6b9bc3;
+            box-shadow: 0 0 20px #6b9bc3;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+            }
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: #1a1a1a;
+            border: 1px solid #ffd700;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+            max-width: 200px;
+        }
+
+        .map-tooltip.show {
+            opacity: 1;
+        }
+
+        .legend {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        footer {
+            background: #000;
+            color: #808080;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid #1a3a52;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: #6b9bc3;
+        }
+
+        .social-links a {
+            color: #6b9bc3;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: all 0.3s;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        @media (max-width: 1024px) {
+            .timeline-line {
+                left: 2rem;
+            }
+
+            .timeline-item.left,
+            .timeline-item.right {
+                justify-content: flex-start;
+                padding-left: 5rem;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                left: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <h1>federico_atzori.phd</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><a href="about.html">about</a></li>
+                        <li><a href="teaching.html">teaching</a></li>
+                        <li><a href="events.html">events</a></li>
+                        <li><a href="otree.html">otree</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>interactive.timeline</h2>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item left">
+                <div class="timeline-card">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-title">Ph.D. Completion</div>
+                    <div class="timeline-desc">Economics & Business, University of Cagliari</div>
+                    <span class="timeline-type">Education</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-card">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-title">Visiting University of Chicago</div>
+                    <div class="timeline-desc">Research visit with Prof. John List</div>
+                    <span class="timeline-type">Research</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-card">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-title">Post-Doc at Milan Bicocca</div>
+                    <div class="timeline-desc">GRINS Programme - Electricity consumption study</div>
+                    <span class="timeline-type">Position</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-card">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-title">Visiting Tilburg University</div>
+                    <div class="timeline-desc">Research visit with Prof. Jan Potters</div>
+                    <span class="timeline-type">Research</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-card">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-title">Visiting Tilburg University</div>
+                    <div class="timeline-desc">First research visit to Tilburg</div>
+                    <span class="timeline-type">Research</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-card">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-title">Master's Degree</div>
+                    <div class="timeline-desc">Public Administration Sciences, University of Cagliari</div>
+                    <span class="timeline-type">Education</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-card">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-title">Bachelor's Degree</div>
+                    <div class="timeline-desc">Political Sciences, University of Cagliari</div>
+                    <span class="timeline-type">Education</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 4rem;">research.world_map</h2>
+
+        <div class="heatmap-container">
+            <div class="world-map" id="world-map">
+                <!-- Italy - Cagliari -->
+                <div class="map-marker" style="left: 52%; top: 45%;" data-location="Cagliari, Italy" data-events="PhD, Multiple conferences, Home base"></div>
+                
+                <!-- Italy - Rome -->
+                <div class="map-marker" style="left: 53%; top: 42%;" data-location="Rome, Italy" data-events="Sapienza University, CIMEO workshops"></div>
+                
+                <!-- Italy - Milan -->
+                <div class="map-marker" style="left: 51%; top: 38%;" data-location="Milan, Italy" data-events="University of Milan-Bicocca Post-Doc"></div>
+                
+                <!-- Netherlands - Tilburg -->
+                <div class="map-marker" style="left: 50%; top: 30%;" data-location="Tilburg, Netherlands" data-events="2x Visiting periods, TIBER symposium"></div>
+                
+                <!-- USA - Chicago -->
+                <div class="map-marker" style="left: 20%; top: 35%;" data-location="Chicago, USA" data-events="University of Chicago visiting researcher"></div>
+                
+                <!-- France - Lyon -->
+                <div class="map-marker" style="left: 50%; top: 38%;" data-location="Lyon, France" data-events="ESA World Meeting 2023"></div>
+                
+                <!-- Spain - Malaga -->
+                <div class="map-marker" style="left: 45%; top: 50%;" data-location="Malaga, Spain" data-events="SEET 2024 Workshop"></div>
+                
+                <!-- UK - London -->
+                <div class="map-marker" style="left: 48%; top: 28%;" data-location="London, UK" data-events="BPP Conference"></div>
+                
+                <!-- Greece - Crete -->
+                <div class="map-marker" style="left: 60%; top: 52%;" data-location="Crete, Greece" data-events="Summer School 2024"></div>
+            </div>
+
+            <div class="map-tooltip" id="map-tooltip"></div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ffd700;"></div>
+                    <span>Research Location</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #6b9bc3;"></div>
+                    <span>Hover for details</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="quote">
+                "I'm here to play games." — G. Charness
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Map Tooltips
+        const markers = document.querySelectorAll('.map-marker');
+        const tooltip = document.getElementById('map-tooltip');
+
+        markers.forEach(marker => {
+            marker.addEventListener('mouseenter', (e) => {
+                const location = marker.dataset.location;
+                const events = marker.dataset.events;
+                
+                tooltip.innerHTML = `<strong style="color: #ffd700;">${location}</strong><br>${events}`;
+                tooltip.classList.add('show');
+            });
+
+            marker.addEventListener('mousemove', (e) => {
+                tooltip.style.left = (e.pageX + 15) + 'px';
+                tooltip.style.top = (e.pageY + 15) + 'px';
+            });
+
+            marker.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('show');
+            });
+        });
+
+        // Timeline card click animation
+        document.querySelectorAll('.timeline-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

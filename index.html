@@ -16,6 +16,103 @@
             line-height: 1.7;
             color: #e0e0e0;
             background: #0a0a0a;
+            transition: all 0.3s ease;
+        }
+
+        /* Theme Styles */
+        body.theme-hacker {
+            background: #000;
+            color: #00ff00;
+        }
+
+        body.theme-hacker header {
+            border-bottom-color: #00ff00;
+        }
+
+        body.theme-hacker .terminal-container {
+            border-color: #00ff00;
+        }
+
+        body.theme-hacker h1,
+        body.theme-hacker .terminal-prompt,
+        body.theme-hacker .cursor,
+        body.theme-hacker .year-title,
+        body.theme-hacker nav a:hover {
+            color: #00ff00;
+        }
+
+        body.theme-hacker nav a,
+        body.theme-hacker .subtitle,
+        body.theme-hacker .section h3 {
+            color: #00ff00;
+        }
+
+        body.theme-paper {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        body.theme-paper header {
+            background: #fff;
+            border-bottom-color: #333;
+        }
+
+        body.theme-paper .terminal-container,
+        body.theme-paper .left-column,
+        body.theme-paper .right-column {
+            background: #fff;
+            border-color: #333;
+            color: #333;
+        }
+
+        body.theme-paper h1,
+        body.theme-paper .terminal-prompt,
+        body.theme-paper .year-title {
+            color: #000;
+        }
+
+        body.theme-paper nav a,
+        body.theme-paper .subtitle {
+            color: #333;
+        }
+
+        body.theme-paper nav a:hover {
+            color: #000;
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: #1a1a1a;
+            border: 1px solid #1a3a52;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .theme-btn {
+            background: #0f0f0f;
+            border: 1px solid #1a3a52;
+            color: #6b9bc3;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .theme-btn:hover {
+            border-color: #ffd700;
+            color: #ffd700;
+        }
+
+        .theme-btn.active {
+            background: #1a3a52;
+            color: #ffd700;
         }
 
         header {
@@ -448,6 +545,42 @@
             background: #6b9bc3;
         }
 
+        /* ASCII Art Intro */
+        #ascii-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        #ascii-intro.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .ascii-art {
+            color: #ffd700;
+            font-family: monospace;
+            font-size: 0.7rem;
+            line-height: 1;
+            white-space: pre;
+            text-align: center;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #ffd700; }
+            50% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; }
+        }
+
         /* Research Graph Styles */
         #research-graph {
             width: 100%;
@@ -483,13 +616,93 @@
     </style>
 </head>
 <body>
+    <!-- ASCII Art Intro -->
+    <div id="ascii-intro">
+        <div class="ascii-art">
+ _____ _____ ____  _____ ____  ___ ____ ___  
+|  ___| ____|  _ \| ____|  _ \|_ _/ ___/ _ \ 
+| |_  |  _| | | | |  _| | |_) || | |  | | | |
+|  _| | |___| |_| | |___|  _ < | | |__| |_| |
+|_|   |_____|____/|_____|_| \_\___\____\___/ 
+                                              
+   _  _____ ______  ___  ____  ___ 
+  / \|_   _|__  / |/ _ \|  _ \|_ _|
+ / _ \ | |   / /  | | | | |_) || | 
+/ ___ \| |  / /_  | |_| |  _ < | | 
+/_/   \_\_| /____|  \___/|_| \_\___|
+        </div>
+    </div>
+
     <script>
+        // ASCII Art Intro Animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('ascii-intro').classList.add('hidden');
+            }, 3000);
+            
+            // Start stats counter animation
+            animateStats();
+        });
+
+        // Theme Switcher
+        function setTheme(theme) {
+            document.body.className = theme === 'academic' ? '' : `theme-${theme}`;
+            
+            // Update active button
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Save theme preference
+            localStorage.setItem('theme', theme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme && savedTheme !== 'academic') {
+            document.body.className = `theme-${savedTheme}`;
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase() === savedTheme) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Live Stats Counter Animation
+        function animateStats() {
+            const stats = [
+                { id: 'stat-papers', target: 5 },
+                { id: 'stat-countries', target: 6 },
+                { id: 'stat-experiments', target: 12 },
+                { id: 'stat-collaborators', target: 15 }
+            ];
+
+            stats.forEach(stat => {
+                let current = 0;
+                const element = document.getElementById(stat.id);
+                const increment = stat.target / 50;
+                
+                const counter = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.target) {
+                        element.textContent = stat.target;
+                        clearInterval(counter);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+
         // Terminal Animation
         const commands = [
             { cmd: 'whoami', output: 'federico_atzori' },
             { cmd: 'cat research.txt', output: 'behavioral_economics | game_theory | experiments' },
             { cmd: 'ls affiliations/', output: 'sapienza/ cagliari/ crenos/' },
-            { cmd: 'echo $INTERESTS', output: 'social_norms microeconomics cooperation risk_attitudes civil_economy' }
+            { cmd: 'echo $INTERESTS', output: 'social_norms cooperation risk_attitudes' }
         ];
         
         let currentCommandIndex = 0;
@@ -557,6 +770,13 @@
         </div>
     </header>
 
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('academic')">Academic</button>
+        <button class="theme-btn" onclick="setTheme('hacker')">Hacker</button>
+        <button class="theme-btn" onclick="setTheme('paper')">Paper</button>
+    </div>
+
     <div class="main-container">
         <!-- Left Column: About Me -->
         <div class="left-column">
@@ -567,19 +787,38 @@
             <p class="village-note">*surname refers to an ancient village in the Judicate of Cagliari</p>
 
             <div class="intro-box">
-                An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment.
+                "An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment."
             </div>
 
             <div class="bio-text">
                 <p>I'm a behavioral scientist who studies how people actually behave when they face incentives, norms, and strategic interactions. Over the years, I've worked with lab (yes, also programming skills) and field experiments to unpack the mechanics of human cooperation and conflict. My compass sits between <em>Microeconomics</em>, <em>Game Theory</em>, <em>Behavioral</em> and <em>Experimental Economics</em>, driven by a stubborn curiosity for how social norms emerge, shape choices, and sometimes tilt the entire game.</p>
             </div>
 
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-label">Papers Published</span>
+                    <span class="stat-value" id="stat-papers">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Countries Visited</span>
+                    <span class="stat-value" id="stat-countries">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Experiments Run</span>
+                    <span class="stat-value" id="stat-experiments">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Collaborators</span>
+                    <span class="stat-value" id="stat-collaborators">0</span>
+                </div>
+            </div>
+
             <div class="section">
                 <h2>current_affiliations</h2>
                 <ul class="affiliations">
                     <li>Postdoctoral Fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a>, Sapienza University</li>
-                    <li>Postdoctoral Fellow at <a href="https://web.unica.it/unica/en/dip_scienzeecoaziend.page" target="_blank">Dept. of Economics and Business Sciences</a>, University of Cagliari</li>
-                    <li>Postdoctoral Fellow at <a href="https://crenos.unica.it/" target="_blank">CRENoS</a>, University of Cagliari and Sassari</li>
+                    <li>Post-Doctoral Fellow at <a href="https://web.unica.it/unica/en/dip_scienzeecoaziend.page" target="_blank">Dept. of Economics and Business Sciences</a>, University of Cagliari</li>
+                    <li>Post-Doctoral Fellow at <a href="https://crenos.unica.it/" target="_blank">CRENoS</a>, University of Cagliari and Sassari</li>
                 </ul>
             </div>
 
@@ -590,7 +829,7 @@
                 <a href="https://earth.google.com/web/search/cagliari" target="_blank" style="color: #6b9bc3;">→ google_earth</a>
                 
                 <div class="sardinia-info">
-                    <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — the second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
+                    <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
                 </div>
             </div>
         </div>
@@ -602,9 +841,26 @@
             <div class="research-interests">
                 <strong>research_interests:</strong><br><br>
                 Behavioral & experimental economics → social norms, pro-social behaviors, risk attitudes, civil economy, gender, religion<br>
-                Microeconomics → consumer behavior, game theory<br>
+                Microeconomics → game theory<br>
                 Sociology → economic sociology, embeddedness, social capital, informal economy<br>
-                Psychology → economic psychology, groups & organizations, social norms
+                Psychology → economic psychology, groups & organizations
+            </div>
+
+            <h3 style="margin: 2rem 0 1rem; color: #6b9bc3; font-family: monospace;">research.network</h3>
+            <canvas id="research-graph"></canvas>
+            <div class="graph-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffd700;"></div>
+                    <span>Papers</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #6b9bc3;"></div>
+                    <span>Topics</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #1a3a52;"></div>
+                    <span>Co-authors</span>
+                </div>
             </div>
 
             <div class="section">
@@ -663,6 +919,141 @@
         </div>
     </footer>
 
-   
+    <script>
+        // Research Network Graph
+        const canvas = document.getElementById('research-graph');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = canvas.offsetWidth;
+        canvas.height = 500;
+        
+        // Graph data
+        const nodes = [
+            // Papers (yellow)
+            { id: 'ai', label: 'AI & Creativity', x: 150, y: 100, color: '#ffd700', type: 'paper', connections: ['creativity', 'corazzini', 'guarnieri'] },
+            { id: 'gambling', label: 'Prosocial Risk', x: 400, y: 80, color: '#ffd700', type: 'paper', connections: ['risk', 'prosocial', 'ballicu', 'pelligra'] },
+            { id: 'electricity', label: 'Electricity', x: 650, y: 120, color: '#ffd700', type: 'paper', connections: ['behavioral', 'corazzini', 'guerzoni', 'mantovani'] },
+            { id: 'religion', label: 'Big Gods', x: 300, y: 250, color: '#ffd700', type: 'paper', connections: ['norms', 'ballicu', 'pelligra'] },
+            { id: 'tax', label: 'Tax Compliance', x: 550, y: 280, color: '#ffd700', type: 'paper', connections: ['norms', 'behavioral', 'pelligra'] },
+            
+            // Topics (blue)
+            { id: 'creativity', label: 'Creativity', x: 100, y: 200, color: '#6b9bc3', type: 'topic' },
+            { id: 'risk', label: 'Risk', x: 450, y: 180, color: '#6b9bc3', type: 'topic' },
+            { id: 'prosocial', label: 'Prosocial', x: 500, y: 380, color: '#6b9bc3', type: 'topic' },
+            { id: 'norms', label: 'Social Norms', x: 350, y: 400, color: '#6b9bc3', type: 'topic' },
+            { id: 'behavioral', label: 'Behavioral Econ', x: 600, y: 200, color: '#6b9bc3', type: 'topic' },
+            
+            // Co-authors (dark blue)
+            { id: 'corazzini', label: 'Corazzini', x: 200, y: 350, color: '#1a3a52', type: 'author' },
+            { id: 'pelligra', label: 'Pelligra', x: 450, y: 450, color: '#1a3a52', type: 'author' },
+            { id: 'ballicu', label: 'Ballicu', x: 300, y: 450, color: '#1a3a52', type: 'author' },
+            { id: 'guarnieri', label: 'Guarnieri', x: 80, y: 300, color: '#1a3a52', type: 'author' },
+            { id: 'guerzoni', label: 'Guerzoni', x: 650, y: 350, color: '#1a3a52', type: 'author' },
+            { id: 'mantovani', label: 'Mantovani', x: 700, y: 250, color: '#1a3a52', type: 'author' }
+        ];
+        
+        let hoveredNode = null;
+        let isDragging = false;
+        let draggedNode = null;
+        let offsetX = 0;
+        let offsetY = 0;
+        
+        function drawGraph() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw connections
+            ctx.strokeStyle = '#1a3a52';
+            ctx.lineWidth = 1;
+            nodes.forEach(node => {
+                if (node.connections) {
+                    node.connections.forEach(connId => {
+                        const target = nodes.find(n => n.id === connId);
+                        if (target) {
+                            ctx.beginPath();
+                            ctx.moveTo(node.x, node.y);
+                            ctx.lineTo(target.x, target.y);
+                            ctx.stroke();
+                        }
+                    });
+                }
+            });
+            
+            // Draw nodes
+            nodes.forEach(node => {
+                ctx.beginPath();
+                const radius = node === hoveredNode ? 8 : 6;
+                ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = node.color;
+                ctx.fill();
+                
+                // Draw labels
+                if (node === hoveredNode || node.type === 'paper') {
+                    ctx.fillStyle = '#e0e0e0';
+                    ctx.font = '10px Courier New';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(node.label, node.x, node.y - 12);
+                }
+            });
+        }
+        
+        // Mouse interaction
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (isDragging && draggedNode) {
+                draggedNode.x = x - offsetX;
+                draggedNode.y = y - offsetY;
+                drawGraph();
+                return;
+            }
+            
+            hoveredNode = null;
+            nodes.forEach(node => {
+                const dx = x - node.x;
+                const dy = y - node.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 10) {
+                    hoveredNode = node;
+                }
+            });
+            
+            canvas.style.cursor = hoveredNode ? 'pointer' : 'default';
+            drawGraph();
+        });
+        
+        canvas.addEventListener('mousedown', (e) => {
+            if (hoveredNode) {
+                isDragging = true;
+                draggedNode = hoveredNode;
+                const rect = canvas.getBoundingClientRect();
+                offsetX = e.clientX - rect.left - draggedNode.x;
+                offsetY = e.clientY - rect.top - draggedNode.y;
+            }
+        });
+        
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+            draggedNode = null;
+        });
+        
+        canvas.addEventListener('mouseleave', () => {
+            hoveredNode = null;
+            isDragging = false;
+            draggedNode = null;
+            drawGraph();
+        });
+        
+        // Initial draw
+        drawGraph();
+        
+        // Redraw on resize
+        window.addEventListener('resize', () => {
+            canvas.width = canvas.offsetWidth;
+            drawGraph();
+        });
+    </script>
 </body>
 </html>
