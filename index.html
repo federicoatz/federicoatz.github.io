@@ -544,39 +544,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #6b9bc3;
         }
-
-        /* Research Graph Styles */
-        #research-graph {
-            width: 100%;
-            height: 500px;
-            background: #0a0a0a;
-            border: 1px solid #1a3a52;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .graph-legend {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(26, 58, 82, 0.8);
-            padding: 0.75rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-        }
-
-        .legend-item {
-            margin: 0.3rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
     </style>
 </head>
 <body>
@@ -783,152 +750,18 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="quote">
-                "I'm here to play games." — G. Charness
-            </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
-            </div>
+<footer>
+    <div class="footer-content">
+        <div class="quote">
+            "I'm here to play games." — G. Charness
         </div>
-    </footer>
-
-    <script>
-        // Research Network Graph
-        const canvas = document.getElementById('research-graph');
-        const ctx = canvas.getContext('2d');
-        
-        // Set canvas size
-        canvas.width = canvas.offsetWidth;
-        canvas.height = 500;
-        
-        // Graph data
-        const nodes = [
-            // Papers (yellow)
-            { id: 'ai', label: 'AI & Creativity', x: 150, y: 100, color: '#ffd700', type: 'paper', connections: ['creativity', 'corazzini', 'guarnieri'] },
-            { id: 'gambling', label: 'Prosocial Risk', x: 400, y: 80, color: '#ffd700', type: 'paper', connections: ['risk', 'prosocial', 'ballicu', 'pelligra'] },
-            { id: 'electricity', label: 'Electricity', x: 650, y: 120, color: '#ffd700', type: 'paper', connections: ['behavioral', 'corazzini', 'guerzoni', 'mantovani'] },
-            { id: 'religion', label: 'Big Gods', x: 300, y: 250, color: '#ffd700', type: 'paper', connections: ['norms', 'ballicu', 'pelligra'] },
-            { id: 'tax', label: 'Tax Compliance', x: 550, y: 280, color: '#ffd700', type: 'paper', connections: ['norms', 'behavioral', 'pelligra'] },
-            
-            // Topics (blue)
-            { id: 'creativity', label: 'Creativity', x: 100, y: 200, color: '#6b9bc3', type: 'topic' },
-            { id: 'risk', label: 'Risk', x: 450, y: 180, color: '#6b9bc3', type: 'topic' },
-            { id: 'prosocial', label: 'Prosocial', x: 500, y: 380, color: '#6b9bc3', type: 'topic' },
-            { id: 'norms', label: 'Social Norms', x: 350, y: 400, color: '#6b9bc3', type: 'topic' },
-            { id: 'behavioral', label: 'Behavioral Econ', x: 600, y: 200, color: '#6b9bc3', type: 'topic' },
-            
-            // Co-authors (dark blue)
-            { id: 'corazzini', label: 'Corazzini', x: 200, y: 350, color: '#1a3a52', type: 'author' },
-            { id: 'pelligra', label: 'Pelligra', x: 450, y: 450, color: '#1a3a52', type: 'author' },
-            { id: 'ballicu', label: 'Ballicu', x: 300, y: 450, color: '#1a3a52', type: 'author' },
-            { id: 'guarnieri', label: 'Guarnieri', x: 80, y: 300, color: '#1a3a52', type: 'author' },
-            { id: 'guerzoni', label: 'Guerzoni', x: 650, y: 350, color: '#1a3a52', type: 'author' },
-            { id: 'mantovani', label: 'Mantovani', x: 700, y: 250, color: '#1a3a52', type: 'author' }
-        ];
-        
-        let hoveredNode = null;
-        let isDragging = false;
-        let draggedNode = null;
-        let offsetX = 0;
-        let offsetY = 0;
-        
-        function drawGraph() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw connections
-            ctx.strokeStyle = '#1a3a52';
-            ctx.lineWidth = 1;
-            nodes.forEach(node => {
-                if (node.connections) {
-                    node.connections.forEach(connId => {
-                        const target = nodes.find(n => n.id === connId);
-                        if (target) {
-                            ctx.beginPath();
-                            ctx.moveTo(node.x, node.y);
-                            ctx.lineTo(target.x, target.y);
-                            ctx.stroke();
-                        }
-                    });
-                }
-            });
-            
-            // Draw nodes
-            nodes.forEach(node => {
-                ctx.beginPath();
-                const radius = node === hoveredNode ? 8 : 6;
-                ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
-                ctx.fillStyle = node.color;
-                ctx.fill();
-                
-                // Draw labels
-                if (node === hoveredNode || node.type === 'paper') {
-                    ctx.fillStyle = '#e0e0e0';
-                    ctx.font = '10px Courier New';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(node.label, node.x, node.y - 12);
-                }
-            });
-        }
-        
-        // Mouse interaction
-        canvas.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            if (isDragging && draggedNode) {
-                draggedNode.x = x - offsetX;
-                draggedNode.y = y - offsetY;
-                drawGraph();
-                return;
-            }
-            
-            hoveredNode = null;
-            nodes.forEach(node => {
-                const dx = x - node.x;
-                const dy = y - node.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 10) {
-                    hoveredNode = node;
-                }
-            });
-            
-            canvas.style.cursor = hoveredNode ? 'pointer' : 'default';
-            drawGraph();
-        });
-        
-        canvas.addEventListener('mousedown', (e) => {
-            if (hoveredNode) {
-                isDragging = true;
-                draggedNode = hoveredNode;
-                const rect = canvas.getBoundingClientRect();
-                offsetX = e.clientX - rect.left - draggedNode.x;
-                offsetY = e.clientY - rect.top - draggedNode.y;
-            }
-        });
-        
-        canvas.addEventListener('mouseup', () => {
-            isDragging = false;
-            draggedNode = null;
-        });
-        
-        canvas.addEventListener('mouseleave', () => {
-            hoveredNode = null;
-            isDragging = false;
-            draggedNode = null;
-            drawGraph();
-        });
-        
-        // Initial draw
-        drawGraph();
-        
-        // Redraw on resize
-        window.addEventListener('resize', () => {
-            canvas.width = canvas.offsetWidth;
-            drawGraph();
-        });
-    </script>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
+        </div>
+    </div>
+    <div style="text-align: center; padding-top: 1rem; opacity: 0.6; font-size: 0.75rem; color: #606060;">
+        Website created in collaboration with Claude AI, a series of large language models developed by Anthropic.
+    </div>
+</footer>
 </body>
 </html>
