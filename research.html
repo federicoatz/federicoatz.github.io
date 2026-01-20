@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Federico Atzori, Ph.D.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #0a0a0a;
+        }
+
+        header {
+            background: #000;
+            border-bottom: 2px solid #1a3a52;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #ffd700;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        h1::before {
+            content: "$ ";
+            color: #1a3a52;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6b9bc3;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: monospace;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a::before {
+            content: "[";
+            color: #1a3a52;
+        }
+
+        nav a::after {
+            content: "]";
+            color: #1a3a52;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-box {
+            background: #0f0f0f;
+            padding: 2.5rem;
+            border: 1px solid #1a3a52;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        h2::before {
+            content: "# ";
+            color: #1a3a52;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #6b9bc3;
+            margin: 2rem 0 1rem;
+            font-weight: 400;
+            font-family: monospace;
+        }
+
+        h3::before {
+            content: "## ";
+            color: #1a3a52;
+        }
+
+        .intro-box {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-left: 3px solid #ffd700;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #c0c0c0;
+        }
+
+        .research-interests {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-left: 3px solid #1a3a52;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #c0c0c0;
+        }
+
+        .research-interests strong {
+            color: #6b9bc3;
+        }
+
+        .paper-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .paper-table th {
+            background: #1a1a1a;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 400;
+            border-bottom: 2px solid #1a3a52;
+            color: #ffd700;
+        }
+
+        .paper-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #1a3a52;
+            vertical-align: top;
+            color: #c0c0c0;
+        }
+
+        .paper-table tr:hover {
+            background: #1a1a1a;
+        }
+
+        .paper-table a {
+            color: #6b9bc3;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .paper-table a:hover {
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        .other-publications {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .other-publications li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: #c0c0c0;
+        }
+
+        .other-publications li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        .other-publications a {
+            color: #6b9bc3;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .other-publications a:hover {
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        .project-section {
+            margin: 2rem 0;
+        }
+
+        .project-item {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: #1a1a1a;
+            border-left: 3px solid #ffd700;
+            font-size: 0.9rem;
+        }
+
+        .project-item strong {
+            color: #6b9bc3;
+            font-size: 1rem;
+        }
+
+        .project-item a {
+            color: #6b9bc3;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .project-item a:hover {
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        .project-desc {
+            color: #c0c0c0;
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .project-label {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #1a3a52;
+            color: #6b9bc3;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            border-radius: 3px;
+        }
+
+        .thesis-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #1a1a1a;
+            border-left: 2px solid #1a3a52;
+            font-size: 0.9rem;
+        }
+
+        .thesis-item strong {
+            color: #6b9bc3;
+        }
+
+        .thesis-item a {
+            color: #6b9bc3;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .thesis-item a:hover {
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #1a3a52;
+            margin: 2rem 0;
+        }
+
+        footer {
+            background: #000;
+            color: #808080;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid #1a3a52;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: #6b9bc3;
+        }
+
+        .social-links a {
+            color: #6b9bc3;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: all 0.3s;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        .social-links a::before {
+            content: "[ ";
+        }
+
+        .social-links a::after {
+            content: " ]";
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-box {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links a {
+                margin: 0 0.75rem;
+            }
+
+            .paper-table {
+                font-size: 0.75rem;
+            }
+
+            .paper-table th,
+            .paper-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <h1>federico_atzori.phd</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><a href="about.html">about</a></li>
+                        <li><a href="research.html">research</a></li>
+                        <li><a href="teaching.html">teaching</a></li>
+                        <li><a href="events.html">events</a></li>
+                        <li><a href="otree.html">otree</a></li>
+                        <li><a href="timeline.html">timeline</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-box">
+            <h2>research.output</h2>
+
+            <div class="intro-box">
+                Welcome to my research section, where I delve into the behavioral aspects of decision-making and social cooperation through <strong>experimental economics</strong>. To ensure full anonymity during the journals review stages preceding a publication, links to pre-registration and the files for replication are made available after publication.
+            </div>
+
+            <div class="research-interests">
+                <strong>Research Interests</strong><br><br>
+                My research interests span several fields. In behavioral and experimental economics, I focus on social norms, pro-social behaviors, risk attitudes, the civil economy, gender, and religion. In microeconomics, I am particularly interested in game theory. I also explore themes in sociology, especially economic sociology, with attention to embeddedness, social capital, and the informal economy. Finally, my work draws on psychology, engaging with economic psychology as well as the psychology of groups and organizations.
+            </div>
+
+            <hr>
+
+            <h3>📝 publications</h3>
+
+            <h4 style="color: #808080; font-family: monospace; font-weight: 400; margin: 1.5rem 0 1rem; font-size: 1rem;">Peer reviewed journals</h4>
+            <p style="color: #c0c0c0; font-size: 0.9rem; margin-bottom: 1.5rem;">Coming soon…..</p>
+
+            <h4 style="color: #808080; font-family: monospace; font-weight: 400; margin: 1.5rem 0 1rem; font-size: 1rem;">Working papers (from newest to oldest)</h4>
+
+            <table class="paper-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Title</th>
+                        <th style="width: 30%;">Author(s) and Year</th>
+                        <th style="width: 20%;">Repository</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://crenos.unica.it/crenos/publications/creative-minds-age-ai-personality-traits-ai-perception-and-creativity-tasks" target="_blank"><em>Creative Minds in the Age of AI. Personality Traits, AI Perception, and Creativity Tasks</em></a></td>
+                        <td>Atzori F., Corazzini L., Guarnieri A. (2025)</td>
+                        <td>CRENoS Working Paper (ISBN 9788868516352)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5350667" target="_blank"><em>When Giving Justifies Gambling: Theory and Experimental Evidence on Prosocial Risk–taking</em></a></td>
+                        <td>Ballicu, G., Atzori, F., & Pelligra, V. (2025)</td>
+                        <td>SSRN 5350667</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://grins.it/output/identifying-electricity-consumption-patterns-using-high-frequency-data-volatility-and-self" target="_blank"><em>Identifying Electricity Consumption Patterns by Using High-Frequency Data: Volatility and Self-Organizing Maps</em></a></td>
+                        <td>Atzori F., Corazzini L., Guerzoni M. & Mantovani M. (2025)</td>
+                        <td>GRINS Foundation (ISSN-3035-5567)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://crenos.unica.it/crenos/publications/under-big-gods%E2%80%99-eyes-impact-religious-beliefs-altruistic-punishment-during-covid-19" target="_blank"><em>Under Big Gods' Eyes. The Impact of Religious Beliefs on Altruistic Punishment During COVID-19 Pandemic</em></a></td>
+                        <td>Atzori, F., Ballicu G. & Pelligra V. (2025)</td>
+                        <td>CRENoS Working Paper (ISBN 9788868515720)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://econpapers.repec.org/paper/cnscnscwp/202407.htm" target="_blank"><em>Framed Norms. The effect of choice-belief information on tax compliance</em></a></td>
+                        <td>Atzori, F. & Pelligra, V. (2024)</td>
+                        <td>CRENoS Working Paper (ISBN 9788868511494)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="color: #808080; font-family: monospace; font-weight: 400; margin: 2rem 0 1rem; font-size: 1rem;">Other Publications</h4>
+
+            <ul class="other-publications">
+                <li>Corazzini, Mantovani, Atzori, Guerzoni & Cattaneo (2024). <a href="https://grins.it/output/reducing-emissions-energy-consumption-through-tailored-behavioral-interventions-evidence-two" target="_blank">Reducing emissions from energy consumption through tailored behavioral interventions: evidence from two randomized controlled field trials</a>. GRINS Foundation.</li>
+            </ul>
+
+            <hr>
+
+            <h3>🛠️ projects</h3>
+
+            <div class="project-section">
+                <h4 style="color: #808080; font-family: monospace; font-weight: 400; margin: 1.5rem 0 1rem; font-size: 1rem;">On-going</h4>
+
+                <div class="project-item">
+                    <strong>FEPS</strong> <span class="project-label">2025-ongoing</span>
+                    <div class="project-desc">
+                        Fighting energy poverty in Sardinia: evaluation plan and field experiment (w/ G. Ballicu; V. Pelligra; in collaboration with "<a href="https://bancodellenergia.it/" target="_blank">Banco dell'Energia</a>" and "Consorzio Alimentis").
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <strong><a href="https://prin.unica.it/bensod/" target="_blank">BENSoD</a></strong> <span class="project-label">2024-ongoing</span>
+                    <div class="project-desc">
+                        An experimental investigation of the Italian North-South divide in trust, cooperation and redistributive preferences (w/ G. Ballicu; E. Carbone; A. Cunsolo; A. Isoni; V. Pelligra; P. Sbriglia).
+                    </div>
+                </div>
+
+                <h4 style="color: #808080; font-family: monospace; font-weight: 400; margin: 2rem 0 1rem; font-size: 1rem;">Closed Projects</h4>
+
+                <div class="project-item" style="border-left-color: #1a3a52;">
+                    <strong>TAILNUD</strong> <span class="project-label">2024-2025</span>
+                    <div class="project-desc">
+                        Reducing emissions from electricity consumption through tailored behavioral interventions: a randomized controlled trial in the field (w/ L. Corazzini; M. Mantovani; in collaboration with Koala Company).
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <h3>🎓 thesis</h3>
+
+            <div class="thesis-item">
+                <strong>Ph.D. Thesis (2025)</strong><br>
+                Framing Norms and Beliefs: Experimental Approaches to Tax Compliance, Gender Identity, Religious Behavior, and Risk-Taking.<br>
+                Available: <a href="https://scholar.google.com/citations?view_op=view_citation&hl=it&user=75wEW74AAAAJ&citation_for_view=75wEW74AAAAJ:2osOgNQ5qMEC" target="_blank">here</a>.
+            </div>
+
+            <div class="thesis-item">
+                <strong>MSc Thesis (2021)</strong><br>
+                Unknown destination. Exploring the impact of artificial intelligence in public administration.<br>
+                <em>First chapter available on Research Gate (Italian)</em>: <a href="https://www.researchgate.net/publication/357449019_Storia_dell'informatica_digitalizzazione_e_intelligenza_artificiale_nella_Pubblica_Amministrazione_italiana" target="_blank">here</a>.
+            </div>
+
+            <div class="thesis-item">
+                <strong>B.A. Thesis (2015)</strong><br>
+                Solidarity economy and collaborative economy. Theories, sociological paths, and practical cases.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="quote">
+                "I'm here to play games." — G. Charness
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #1a3a52; margin-top: 1rem;">
+            <p style="font-size: 0.75rem; color: #606060; font-family: monospace;">
+                → Website created in collaboration with <a href="https://www.anthropic.com/claude" target="_blank" style="color: #6b9bc3; text-decoration: none;">Claude AI</a>, developed by Anthropic
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
