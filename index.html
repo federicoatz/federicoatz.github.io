@@ -494,37 +494,38 @@
         /* Mobile optimization */
 @media (max-width: 768px) {
     .header-content {
-        flex-direction: column;
+        flex-direction: column; /* mantiene il titolo sopra */
         gap: 1rem;
     }
 
     nav ul {
-        flex-direction: column;
+        flex-direction: row; /* menu sempre affiancato */
+        flex-wrap: wrap;     /* va a capo se necessario */
         gap: 0.5rem;
     }
 
     .main-container {
-        grid-template-columns: 1fr; /* singola colonna */
+        grid-template-columns: 1fr;
         padding: 0 1rem;
         gap: 1rem;
     }
 
     .left-column, .right-column {
-        padding: 1rem; /* ridotto da 1.5rem */
-        overflow-wrap: break-word; /* evita overflow del testo */
+        padding: 1rem;
+        overflow-wrap: break-word;
     }
 
     .terminal-container {
-        font-size: 0.75rem; /* più piccolo per schermi stretti */
+        font-size: 0.75rem;
     }
 
     .terminal-line {
-        word-break: break-word; /* forza a capo */
+        word-break: break-word;
     }
 
     .bio-text, .research-interests {
-        font-size: 0.85rem; /* leggermente più piccolo */
-        line-height: 1.5; /* più compatto */
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
 
     .footer-content {
