@@ -593,6 +593,66 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #6b9bc3;
         }
+        /* === PIXEL TIMELINE MINI GAME === */
+        .pixel-game {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: #0f0f0f;
+            border: 1px solid #1a3a52;
+            text-align: center;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 180px;
+            margin: 2rem auto;
+            background: #000;
+            border: 1px solid #1a3a52;
+            overflow: hidden;
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 40px;
+            width: 2000px;
+            height: 4px;
+            background: #1a3a52;
+        }
+
+        .year-marker {
+            position: absolute;
+            bottom: 44px;
+            width: 2px;
+            height: 20px;
+            background: #6b9bc3;
+        }
+
+        .year-label {
+            position: absolute;
+            bottom: 70px;
+            font-size: 0.7rem;
+            color: #6b9bc3;
+            transform: translateX(-50%);
+        }
+
+        .pixel-character {
+            position: absolute;
+            bottom: 44px;
+            width: 16px;
+            height: 24px;
+            background: #ffd700;
+            box-shadow:
+                0 0 0 2px #ffd700,
+                0 0 0 4px #000;
+        }
+
+        .game-info {
+            font-size: 0.8rem;
+            color: #6b9bc3;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -600,13 +660,13 @@
         // Theme Switcher
         function setTheme(theme) {
             document.body.className = theme === 'academic' ? '' : `theme-${theme}`;
-            
+
             // Update active button
             document.querySelectorAll('.theme-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
-            
+
             // Save theme preference
             localStorage.setItem('theme', theme);
         }
@@ -631,16 +691,16 @@
             { cmd: 'ls affiliations/', output: 'sapienza/ cagliari/ crenos/' },
             { cmd: 'echo $INTERESTS', output: 'social_norms cooperation risk_attitudes' }
         ];
-        
+
         let currentCommandIndex = 0;
         let currentCharIndex = 0;
         let isTypingCommand = true;
-        
+
         function typeWriter() {
             const commandText = document.getElementById('command-text');
             const outputText = document.getElementById('output-text');
             const currentCmd = commands[currentCommandIndex];
-            
+
             if (isTypingCommand) {
                 if (currentCharIndex < currentCmd.cmd.length) {
                     commandText.textContent += currentCmd.cmd.charAt(currentCharIndex);
@@ -668,7 +728,7 @@
                 }
             }
         }
-        
+
         window.addEventListener('load', () => {
             setTimeout(typeWriter, 1000);
         });
@@ -688,7 +748,7 @@
                     </ul>
                 </nav>
             </div>
-            
+
             <div class="terminal-container">
                 <div class="terminal-line">
                     <span class="terminal-prompt">$</span> <span id="command-text"></span><span class="cursor"></span>
@@ -709,9 +769,9 @@
         <!-- Left Column: About Me -->
         <div class="left-column">
             <h2 class="subtitle">behavioral_science & economics</h2>
-            
+
             <p class="pronunciation">pronunciation: /feˈdeːriko aˈzoːri/</p>
-            
+
             <p class="village-note">*surname refers to an ancient village in the Judicate of Cagliari</p>
 
             <div class="intro-box">
@@ -736,11 +796,18 @@
             <div class="location-box">
                 <h3>origin.location</h3>
                 <a href="https://earth.google.com/web/search/cagliari" target="_blank" style="color: #6b9bc3;">→ google_earth</a>
-                
+
                 <div class="sardinia-info">
                     <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
-                </div>
+        </div>
+        <div class="pixel-game">
+            <h3>career.timeline.exe</h3>
+            <div class="game-container" id="game">
+                <div class="ground"></div>
+                <div class="pixel-character" id="player"></div>
             </div>
+            <div class="game-info">Use ← → arrows to walk through time</div>
+        </div>
         </div>
 
         <!-- Right Column: Research -->
@@ -757,7 +824,7 @@
 
             <div class="section">
                 <h3>publications.working_papers</h3>
-                
+
                 <table class="paper-table">
                     <thead>
                         <tr>
@@ -814,4 +881,56 @@
     </div>
 </footer>
 </body>
+<script>
+const player = document.getElementById("player");
+const game = document.getElementById("game");
+const ground = document.querySelector(".ground");
+
+let position = 50;
+let worldOffset = 0;
+
+const years = [
+    { year: "2015", x: 100 },
+    { year: "2016", x: 250 },
+    { year: "2017", x: 400 },
+    { year: "2018", x: 550 },
+    { year: "2019", x: 700 },
+    { year: "2021", x: 900 },
+    { year: "2023", x: 1200 },
+    { year: "2024", x: 1400 },
+    { year: "2025", x: 1600 }
+];
+
+// Create markers
+years.forEach(y => {
+    const marker = document.createElement("div");
+    marker.className = "year-marker";
+    marker.style.left = y.x + "px";
+
+    const label = document.createElement("div");
+    label.className = "year-label";
+    label.style.left = y.x + "px";
+    label.textContent = y.year;
+
+    ground.appendChild(marker);
+    ground.appendChild(label);
+});
+
+function updateWorld() {
+    ground.style.transform = `translateX(-${worldOffset}px)`;
+    player.style.left = position + "px";
+}
+
+updateWorld();
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+        worldOffset += 20;
+    }
+    if (e.key === "ArrowLeft" && worldOffset > 0) {
+        worldOffset -= 20;
+    }
+    updateWorld();
+});
+</script>
 </html>
