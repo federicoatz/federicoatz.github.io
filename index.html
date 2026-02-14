@@ -616,7 +616,7 @@
         .ground {
             position: absolute;
             bottom: 40px;
-            width: 2000px;
+            width: 1100px;
             height: 4px;
             background: #1a3a52;
         }
@@ -640,12 +640,28 @@
         .pixel-character {
             position: absolute;
             bottom: 44px;
-            width: 16px;
-            height: 24px;
+            width: 12px;
+            height: 20px;
+        }
+
+        .pixel-character::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 4px;
+            width: 4px;
+            height: 4px;
             background: #ffd700;
-            box-shadow:
-                0 0 0 2px #ffd700,
-                0 0 0 4px #000;
+        }
+
+        .pixel-character::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 5px;
+            width: 2px;
+            height: 12px;
+            background: #ffd700;
         }
 
         .game-info {
@@ -657,15 +673,6 @@
         .pixel-character.walk1 { background: #ffd700; }
         .pixel-character.walk2 { background: #ffae00; }
 
-        .pixel-character.jump {
-            animation: jumpAnim 0.4s ease;
-        }
-
-        @keyframes jumpAnim {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-40px); }
-            100% { transform: translateY(0); }
-        }
 
         .info-popup {
             position: absolute;
@@ -820,10 +827,9 @@
             <div class="pixel-character" id="player"></div>
             <div class="info-popup" id="popup"></div>
         </div>
-        <div class="game-info">← → move | space = jump</div>
+        <div class="game-info">← → move</div>
         <div class="mobile-controls">
             <button onclick="moveLeft()">◀</button>
-            <button onclick="jump()">▲</button>
             <button onclick="moveRight()">▶</button>
         </div>
     </div>
@@ -945,12 +951,14 @@ let worldOffset = 0;
 let walkFrame = false;
 
 const years = [
-    { year: "2015", x: 100, text: "Bachelor's Degree" },
-    { year: "2016", x: 250, text: "Business Experience" },
-    { year: "2021", x: 900, text: "Master's Degree" },
-    { year: "2023", x: 1200, text: "#1 Working Paper" },
-    { year: "2024", x: 1400, text: "#1 Rejection 😏" },
-    { year: "2025", x: 1600, text: "PhD" }
+    { year: "2015", x: 80, text: "Bachelor's Degree" },
+    { year: "2017-2019", x: 250, text: "Business Experience" },
+    { year: "2021", x: 400, text: "Master's Degree" },
+    { year: "2022-2023", x: 550, text: "Tilburg Visiting" },
+    { year: "2023", x: 650, text: "#1 Working Paper" },
+    { year: "2024", x: 750, text: "#1 Rejection" },
+    { year: "2025", x: 900, text: "PhD" },
+    { year: "2025-2026", x: 1000, text: "Post-Doc" }
 ];
 
 years.forEach(y => {
@@ -979,22 +987,17 @@ function animateWalk() {
 }
 
 function moveRight() {
-    worldOffset += 20;
+    worldOffset += 12;
     animateWalk();
     updateWorld();
 }
 
 function moveLeft() {
     if (worldOffset > 0) {
-        worldOffset -= 20;
+        worldOffset -= 12;
         animateWalk();
         updateWorld();
     }
-}
-
-function jump() {
-    player.classList.add("jump");
-    setTimeout(() => player.classList.remove("jump"), 400);
 }
 
 function checkYear() {
@@ -1012,7 +1015,6 @@ function checkYear() {
 document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") moveRight();
     if (e.key === "ArrowLeft") moveLeft();
-    if (e.key === " ") jump();
 });
 
 updateWorld();
