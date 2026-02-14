@@ -653,6 +653,54 @@
             color: #6b9bc3;
             margin-top: 1rem;
         }
+
+        .pixel-character.walk1 { background: #ffd700; }
+        .pixel-character.walk2 { background: #ffae00; }
+
+        .pixel-character.jump {
+            animation: jumpAnim 0.4s ease;
+        }
+
+        @keyframes jumpAnim {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-40px); }
+            100% { transform: translateY(0); }
+        }
+
+        .info-popup {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            border: 1px solid #ffd700;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            color: #ffd700;
+            display: none;
+            white-space: nowrap;
+        }
+
+        .mobile-controls {
+            display: none;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+
+        .mobile-controls button {
+            background: #0f0f0f;
+            border: 1px solid #1a3a52;
+            color: #ffd700;
+            padding: 0.5rem 1rem;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-controls {
+                display: flex;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -765,6 +813,21 @@
         <button class="theme-btn" onclick="setTheme('paper')">Paper</button>
     </div>
 
+    <div class="pixel-game">
+        <h3>career.timeline.exe</h3>
+        <div class="game-container" id="game">
+            <div class="ground"></div>
+            <div class="pixel-character" id="player"></div>
+            <div class="info-popup" id="popup"></div>
+        </div>
+        <div class="game-info">← → move | space = jump</div>
+        <div class="mobile-controls">
+            <button onclick="moveLeft()">◀</button>
+            <button onclick="jump()">▲</button>
+            <button onclick="moveRight()">▶</button>
+        </div>
+    </div>
+
     <div class="main-container">
         <!-- Left Column: About Me -->
         <div class="left-column">
@@ -799,14 +862,6 @@
 
                 <div class="sardinia-info">
                     <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
-        </div>
-        <div class="pixel-game">
-            <h3>career.timeline.exe</h3>
-            <div class="game-container" id="game">
-                <div class="ground"></div>
-                <div class="pixel-character" id="player"></div>
-            </div>
-            <div class="game-info">Use ← → arrows to walk through time</div>
         </div>
         </div>
 
@@ -883,25 +938,21 @@
 </body>
 <script>
 const player = document.getElementById("player");
-const game = document.getElementById("game");
 const ground = document.querySelector(".ground");
+const popup = document.getElementById("popup");
 
-let position = 50;
 let worldOffset = 0;
+let walkFrame = false;
 
 const years = [
-    { year: "2015", x: 100 },
-    { year: "2016", x: 250 },
-    { year: "2017", x: 400 },
-    { year: "2018", x: 550 },
-    { year: "2019", x: 700 },
-    { year: "2021", x: 900 },
-    { year: "2023", x: 1200 },
-    { year: "2024", x: 1400 },
-    { year: "2025", x: 1600 }
+    { year: "2015", x: 100, text: "Bachelor's Degree" },
+    { year: "2016", x: 250, text: "Business Experience" },
+    { year: "2021", x: 900, text: "Master's Degree" },
+    { year: "2023", x: 1200, text: "#1 Working Paper" },
+    { year: "2024", x: 1400, text: "#1 Rejection 😏" },
+    { year: "2025", x: 1600, text: "PhD" }
 ];
 
-// Create markers
 years.forEach(y => {
     const marker = document.createElement("div");
     marker.className = "year-marker";
@@ -918,19 +969,52 @@ years.forEach(y => {
 
 function updateWorld() {
     ground.style.transform = `translateX(-${worldOffset}px)`;
-    player.style.left = position + "px";
+    checkYear();
 }
 
-updateWorld();
+function animateWalk() {
+    walkFrame = !walkFrame;
+    player.classList.toggle("walk1", walkFrame);
+    player.classList.toggle("walk2", !walkFrame);
+}
+
+function moveRight() {
+    worldOffset += 20;
+    animateWalk();
+    updateWorld();
+}
+
+function moveLeft() {
+    if (worldOffset > 0) {
+        worldOffset -= 20;
+        animateWalk();
+        updateWorld();
+    }
+}
+
+function jump() {
+    player.classList.add("jump");
+    setTimeout(() => player.classList.remove("jump"), 400);
+}
+
+function checkYear() {
+    const playerPos = worldOffset + 50;
+    let found = years.find(y => Math.abs(y.x - playerPos) < 20);
+
+    if (found) {
+        popup.textContent = found.text;
+        popup.style.display = "block";
+    } else {
+        popup.style.display = "none";
+    }
+}
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
-        worldOffset += 20;
-    }
-    if (e.key === "ArrowLeft" && worldOffset > 0) {
-        worldOffset -= 20;
-    }
-    updateWorld();
+    if (e.key === "ArrowRight") moveRight();
+    if (e.key === "ArrowLeft") moveLeft();
+    if (e.key === " ") jump();
 });
+
+updateWorld();
 </script>
 </html>
