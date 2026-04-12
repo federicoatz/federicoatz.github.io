@@ -4,740 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Federico Atzori, Ph.D.</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Courier New', monospace;
-            line-height: 1.7;
-            color: #e0e0e0;
-            background: #0a0a0a;
-            transition: all 0.3s ease;
-        }
-
-        /* Theme Styles */
-        body.theme-hacker {
-            background: #000;
-            color: #00ff00;
-        }
-
-        body.theme-hacker header {
-            border-bottom-color: #00ff00;
-        }
-
-        body.theme-hacker .terminal-container {
-            border-color: #00ff00;
-        }
-
-        body.theme-hacker h1,
-        body.theme-hacker .terminal-prompt,
-        body.theme-hacker .cursor,
-        body.theme-hacker .year-title,
-        body.theme-hacker nav a:hover {
-            color: #00ff00;
-        }
-
-        body.theme-hacker nav a,
-        body.theme-hacker .subtitle,
-        body.theme-hacker .section h3 {
-            color: #00ff00;
-        }
-
-        body.theme-paper {
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        body.theme-paper header {
-            background: #fff;
-            border-bottom-color: #333;
-        }
-
-        body.theme-paper .terminal-container,
-        body.theme-paper .left-column,
-        body.theme-paper .right-column {
-            background: #fff;
-            border-color: #333;
-            color: #333;
-        }
-
-        body.theme-paper h1,
-        body.theme-paper .terminal-prompt,
-        body.theme-paper .year-title {
-            color: #000;
-        }
-
-        body.theme-paper nav a,
-        body.theme-paper .subtitle {
-            color: #333;
-        }
-
-        body.theme-paper nav a:hover {
-            color: #000;
-        }
-
-        /* Theme Switcher */
-        .theme-switcher {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-            background: #1a1a1a;
-            border: 1px solid #1a3a52;
-            padding: 1rem;
-            border-radius: 8px;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .theme-btn {
-            background: #0f0f0f;
-            border: 1px solid #1a3a52;
-            color: #6b9bc3;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-family: monospace;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-        }
-
-        .theme-btn:hover {
-            border-color: #ffd700;
-            color: #ffd700;
-        }
-
-        .theme-btn.active {
-            background: #1a3a52;
-            color: #ffd700;
-        }
-
-        header {
-            background: #000;
-            border-bottom: 2px solid #1a3a52;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .terminal-container {
-            background: #0a0a0a;
-            border: 1px solid #1a3a52;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.85rem;
-        }
-
-        .terminal-line {
-            color: #6b9bc3;
-            margin: 0.3rem 0;
-        }
-
-        .terminal-prompt {
-            color: #ffd700;
-        }
-
-        .terminal-output {
-            color: #c0c0c0;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 14px;
-            background: #ffd700;
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        h1 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #ffd700;
-            font-family: monospace;
-            letter-spacing: 1px;
-        }
-
-        h1::before {
-            content: "$ ";
-            color: #1a3a52;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #6b9bc3;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            font-family: monospace;
-        }
-
-        nav a:hover {
-            color: #ffd700;
-        }
-
-        nav a::before {
-            content: "[";
-            color: #1a3a52;
-        }
-
-        nav a::after {
-            content: "]";
-            color: #1a3a52;
-        }
-
-        .main-container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .left-column, .right-column {
-            background: #0f0f0f;
-            padding: 2.5rem;
-            border: 1px solid #1a3a52;
-            border-radius: 0;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #ffd700;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            font-family: monospace;
-        }
-
-        .subtitle::before {
-            content: "# ";
-            color: #1a3a52;
-        }
-
-        .pronunciation {
-            color: #808080;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            font-family: monospace;
-        }
-
-        .village-note {
-            color: #606060;
-            font-style: italic;
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            font-family: monospace;
-        }
-
-        .intro-box {
-            background: #1a1a1a;
-            padding: 1.5rem;
-            border-left: 3px solid #ffd700;
-            margin: 1.5rem 0;
-            font-style: italic;
-            color: #a0a0a0;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        .bio-text {
-            margin: 1.5rem 0;
-            line-height: 1.8;
-            color: #c0c0c0;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        .section {
-            margin: 2.5rem 0;
-        }
-
-        .section h2 {
-            font-size: 1.2rem;
-            color: #6b9bc3;
-            margin-bottom: 1.2rem;
-            font-weight: 400;
-            font-family: monospace;
-        }
-
-        .section h2::before {
-            content: "## ";
-            color: #1a3a52;
-        }
-
-        .section h3 {
-            font-size: 1rem;
-            color: #6b9bc3;
-            margin: 1.5rem 0 1rem;
-            font-weight: 400;
-            font-family: monospace;
-        }
-
-        .section h3::before {
-            content: "### ";
-            color: #1a3a52;
-        }
-
-        .affiliations {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .affiliations li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.9rem;
-            color: #c0c0c0;
-            font-family: monospace;
-        }
-
-        .affiliations li:before {
-            content: ">";
-            position: absolute;
-            left: 0;
-            color: #ffd700;
-            font-weight: bold;
-        }
-
-        .affiliations a, .section a {
-            color: #6b9bc3;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .affiliations a:hover, .section a:hover {
-            color: #ffd700;
-            border-bottom: 1px solid #ffd700;
-        }
-
-        .location-box {
-            background: #1a1a1a;
-            padding: 1.5rem;
-            border: 1px solid #1a3a52;
-            margin: 1.5rem 0;
-        }
-
-        .location-box h3 {
-            margin-top: 0;
-        }
-
-        .sardinia-info {
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #a0a0a0;
-            font-family: monospace;
-        }
-
-        .research-interests {
-            background: #1a1a1a;
-            padding: 1.5rem;
-            border-left: 3px solid #ffd700;
-            margin: 1.5rem 0;
-            font-size: 0.9rem;
-            line-height: 1.7;
-            font-family: monospace;
-            color: #c0c0c0;
-        }
-
-        .paper-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 0.85rem;
-            font-family: monospace;
-        }
-
-        .paper-table th {
-            background: #1a1a1a;
-            padding: 0.75rem;
-            text-align: left;
-            font-weight: 400;
-            border-bottom: 2px solid #1a3a52;
-            color: #ffd700;
-        }
-
-        .paper-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #1a3a52;
-            vertical-align: top;
-            color: #c0c0c0;
-        }
-
-        .paper-table tr:hover {
-            background: #1a1a1a;
-        }
-
-        .project-item {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: #1a1a1a;
-            border-left: 2px solid #1a3a52;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #c0c0c0;
-        }
-
-        .project-item strong {
-            color: #6b9bc3;
-        }
-
-        .thesis-item {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-            border-left: 2px solid #1a3a52;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #c0c0c0;
-        }
-
-        .thesis-item strong {
-            color: #6b9bc3;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #1a3a52;
-            margin: 2rem 0;
-        }
-
-        footer {
-            background: #000;
-            color: #808080;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            border-top: 2px solid #1a3a52;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 0.9rem;
-            font-family: monospace;
-            color: #6b9bc3;
-        }
-
-        .social-links a {
-            color: #6b9bc3;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            transition: all 0.3s;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        .social-links a:hover {
-            color: #ffd700;
-        }
-
-        .social-links a::before {
-            content: "[ ";
-        }
-
-        .social-links a::after {
-            content: " ]";
-        }
-
-        @media (max-width: 1024px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-        /* Mobile optimization */
-@media (max-width: 768px) {
-    .header-content {
-        flex-direction: column; /* mantiene il titolo sopra */
-        gap: 1rem;
-    }
-
-    nav ul {
-        flex-direction: row; /* menu sempre affiancato */
-        flex-wrap: wrap;     /* va a capo se necessario */
-        gap: 0.5rem;
-    }
-
-    .main-container {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-        gap: 1rem;
-    }
-
-    .left-column, .right-column {
-        padding: 1rem;
-        overflow-wrap: break-word;
-    }
-
-    .terminal-container {
-        font-size: 0.75rem;
-    }
-
-    .terminal-line {
-        word-break: break-word;
-    }
-
-    .bio-text, .research-interests {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.75rem;
-    }
-
-    .social-links a {
-        margin: 0 0.5rem;
-        font-size: 0.85rem;
-    }
-}
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .main-container {
-                padding: 0 1rem;
-            }
-
-            .left-column, .right-column {
-                padding: 1.5rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .social-links a {
-                margin: 0 0.75rem;
-            }
-        }
-
-        strong {
-            color: #6b9bc3;
-        }
-
-        em {
-            color: #ffd700;
-        }
-
-        h4 {
-            color: #808080;
-            font-family: monospace;
-            font-weight: 400;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #1a3a52;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b9bc3;
-        }
-        /* === PIXEL TIMELINE MINI GAME === */
-        .pixel-game {
-            margin: 4rem 0;
-            padding: 2rem;
-            background: #0f0f0f;
-            border: 1px solid #1a3a52;
-            text-align: center;
-        }
-
-        .game-container {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            height: 180px;
-            margin: 2rem auto;
-            background: #000;
-            border: 1px solid #1a3a52;
-            overflow: hidden;
-        }
-
-        .ground {
-            position: absolute;
-            bottom: 40px;
-            width: 1100px;
-            height: 4px;
-            background: #1a3a52;
-        }
-
-        .year-marker {
-            position: absolute;
-            bottom: 44px;
-            width: 2px;
-            height: 20px;
-            background: #6b9bc3;
-        }
-
-        .year-label {
-            position: absolute;
-            bottom: 70px;
-            font-size: 0.7rem;
-            color: #6b9bc3;
-            transform: translateX(-50%);
-        }
-
-        .pixel-character {
-            position: absolute;
-            bottom: 44px;
-            left: 50px; /* initial visible position */
-            width: 12px;
-            height: 20px;
-        }
-
-        .pixel-character::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 4px;
-            width: 4px;
-            height: 4px;
-            background: #ffd700;
-        }
-
-        .pixel-character::after {
-            content: "";
-            position: absolute;
-            top: 4px;
-            left: 5px;
-            width: 2px;
-            height: 12px;
-            background: #ffd700;
-        }
-
-        .game-info {
-            font-size: 0.8rem;
-            color: #6b9bc3;
-            margin-top: 1rem;
-        }
-
-        .pixel-character.walk1 { background: #ffd700; }
-        .pixel-character.walk2 { background: #ffae00; }
-
-
-        .info-popup {
-            position: absolute;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #111;
-            border: 1px solid #ffd700;
-            padding: 0.5rem 1rem;
-            font-size: 0.75rem;
-            color: #ffd700;
-            display: none;
-            white-space: nowrap;
-        }
-
-        .mobile-controls {
-            display: none;
-            margin-top: 1rem;
-            gap: 1rem;
-        }
-
-        .mobile-controls button {
-            background: #0f0f0f;
-            border: 1px solid #1a3a52;
-            color: #ffd700;
-            padding: 0.5rem 1rem;
-            font-family: monospace;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-controls {
-                display: flex;
-                justify-content: center;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <script>
+        // Restore saved theme before content renders
+        (function() {
+            const t = localStorage.getItem('theme');
+            if (t && t !== 'academic') document.body.className = 'theme-' + t;
+        })();
+
         // Theme Switcher
         function setTheme(theme) {
-            document.body.className = theme === 'academic' ? '' : `theme-${theme}`;
-
-            // Update active button
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.body.className = theme === 'academic' ? '' : 'theme-' + theme;
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-
-            // Save theme preference
             localStorage.setItem('theme', theme);
-        }
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme && savedTheme !== 'academic') {
-            document.body.className = `theme-${savedTheme}`;
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                if (btn.textContent.toLowerCase() === savedTheme) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
         }
 
         // Terminal Animation
@@ -786,9 +70,15 @@
         }
 
         window.addEventListener('load', () => {
+            // Restore active theme button
+            const savedTheme = localStorage.getItem('theme') || 'academic';
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === savedTheme);
+            });
             setTimeout(typeWriter, 1000);
         });
     </script>
+
     <header>
         <div class="header-container">
             <div class="header-content">
@@ -841,7 +131,6 @@
             <h2 class="subtitle">behavioral_science & economics</h2>
 
             <p class="pronunciation">pronunciation: /feˈdeːriko aˈzoːri/</p>
-
             <p class="village-note">*surname refers to an ancient village in the Judicate of Cagliari</p>
 
             <div class="intro-box">
@@ -865,12 +154,12 @@
 
             <div class="location-box">
                 <h3>origin.location</h3>
-                <a href="https://earth.google.com/web/search/cagliari" target="_blank" style="color: #6b9bc3;">→ google_earth</a>
-
+                <a href="https://earth.google.com/web/search/cagliari" target="_blank">→ google_earth</a>
                 <div class="sardinia-info">
                     <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
-        </div>
-        </div>
+                </div>
+            </div>
+        </div><!-- /left-column -->
 
         <!-- Right Column: Research -->
         <div class="right-column" id="research">
@@ -878,10 +167,10 @@
 
             <div class="research-interests">
                 <strong>research_interests:</strong><br><br>
-                Behavioral & experimental economics → social norms, pro-social behaviors, risk attitudes, civil economy, gender, religion<br>
+                Behavioral &amp; experimental economics → social norms, pro-social behaviors, risk attitudes, civil economy, gender, religion<br>
                 Microeconomics → game theory<br>
                 Sociology → economic sociology, embeddedness, social capital, informal economy<br>
-                Psychology → economic psychology, groups & organizations
+                Psychology → economic psychology, groups &amp; organizations
             </div>
 
             <div class="section">
@@ -924,100 +213,97 @@
                     </tbody>
                 </table>
             </div>
+        </div><!-- /right-column -->
+    </div><!-- /main-container -->
 
-
+    <footer>
+        <div class="footer-content">
+            <div class="quote">
+                "I'm here to play games." — G. Charness
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
+                <a href="https://scholar.google.com/citations?user=75wEW74AAAAJ" target="_blank">scholar</a>
+                <!-- TODO: add your ORCID → <a href="https://orcid.org/YOUR-ORCID" target="_blank">orcid</a> -->
+                <!-- TODO: add your email → <a href="mailto:your.email@institution.edu">email</a> -->
+            </div>
         </div>
-    </div>
-
-<footer>
-    <div class="footer-content">
-        <div class="quote">
-            "I'm here to play games." — G. Charness
+        <div class="footer-attribution">
+            → Website created in collaboration with <a href="https://www.anthropic.com/claude" target="_blank">Claude AI</a>, developed by Anthropic
         </div>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
-        </div>
-    </div>
-    <div style="text-align: center; padding-top: 1rem; opacity: 0.6; font-size: 0.75rem; color: #606060;">
-        Website created in collaboration with Claude AI, a series of large language models developed by Anthropic.
-    </div>
-</footer>
-</body>
-<script>
-const player = document.getElementById("player");
-const ground = document.querySelector(".ground");
-const popup = document.getElementById("popup");
+    </footer>
 
-let worldOffset = 0;
-let walkFrame = false;
+    <script>
+        const player = document.getElementById("player");
+        const ground = document.querySelector(".ground");
+        const popup = document.getElementById("popup");
 
-const years = [
-    { year: "2015", x: 80, text: "Bachelor's Degree" },
-    { year: "2017-2019", x: 250, text: "Business Experience" },
-    { year: "2021", x: 400, text: "Master's Degree" },
-    { year: "2022-2023", x: 550, text: "Tilburg Visiting" },
-    { year: "2023", x: 650, text: "#1 Working Paper" },
-    { year: "2024", x: 750, text: "#1 Rejection" },
-    { year: "2025", x: 900, text: "PhD" },
-    { year: "2025-2026", x: 1000, text: "Post-Doc" }
-];
+        let worldOffset = 0;
+        let walkFrame = false;
 
-years.forEach(y => {
-    const marker = document.createElement("div");
-    marker.className = "year-marker";
-    marker.style.left = y.x + "px";
+        const years = [
+            { year: "2015", x: 80, text: "Bachelor's Degree" },
+            { year: "2017-2019", x: 250, text: "Business Experience" },
+            { year: "2021", x: 400, text: "Master's Degree" },
+            { year: "2022-2023", x: 550, text: "Tilburg Visiting" },
+            { year: "2023", x: 650, text: "#1 Working Paper" },
+            { year: "2024", x: 750, text: "#1 Rejection" },
+            { year: "2025", x: 900, text: "PhD" },
+            { year: "2025-2026", x: 1000, text: "Post-Doc" }
+        ];
 
-    const label = document.createElement("div");
-    label.className = "year-label";
-    label.style.left = y.x + "px";
-    label.textContent = y.year;
+        years.forEach(y => {
+            const marker = document.createElement("div");
+            marker.className = "year-marker";
+            marker.style.left = y.x + "px";
 
-    ground.appendChild(marker);
-    ground.appendChild(label);
-});
+            const label = document.createElement("div");
+            label.className = "year-label";
+            label.style.left = y.x + "px";
+            label.textContent = y.year;
 
-function updateWorld() {
-    ground.style.transform = `translateX(-${worldOffset}px)`;
-    checkYear();
-}
+            ground.appendChild(marker);
+            ground.appendChild(label);
+        });
 
-function animateWalk() {
-    walkFrame = !walkFrame;
-    player.classList.toggle("walk1", walkFrame);
-    player.classList.toggle("walk2", !walkFrame);
-}
+        function updateWorld() {
+            ground.style.transform = `translateX(-${worldOffset}px)`;
+            checkYear();
+        }
 
-function moveRight() {
-    worldOffset += 12;
-    animateWalk();
-    updateWorld();
-}
+        function animateWalk() {
+            walkFrame = !walkFrame;
+            player.classList.toggle("walk1", walkFrame);
+            player.classList.toggle("walk2", !walkFrame);
+        }
 
-function moveLeft() {
-    if (worldOffset > 0) {
-        worldOffset -= 12;
-        animateWalk();
+        function moveRight() {
+            worldOffset += 12;
+            animateWalk();
+            updateWorld();
+        }
+
+        function moveLeft() {
+            if (worldOffset > 0) {
+                worldOffset -= 12;
+                animateWalk();
+                updateWorld();
+            }
+        }
+
+        function checkYear() {
+            const playerPos = worldOffset + 50;
+            const found = years.find(y => Math.abs(y.x - playerPos) < 20);
+            popup.textContent = found ? found.text : '';
+            popup.style.display = found ? "block" : "none";
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") moveRight();
+            if (e.key === "ArrowLeft") moveLeft();
+        });
+
         updateWorld();
-    }
-}
-
-function checkYear() {
-    const playerPos = worldOffset + 50;
-    let found = years.find(y => Math.abs(y.x - playerPos) < 20);
-
-    if (found) {
-        popup.textContent = found.text;
-        popup.style.display = "block";
-    } else {
-        popup.style.display = "none";
-    }
-}
-
-document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") moveRight();
-    if (e.key === "ArrowLeft") moveLeft();
-});
-
-updateWorld();
-</script>
+    </script>
+</body>
 </html>
