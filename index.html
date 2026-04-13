@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,7 +82,7 @@
     <header>
         <div class="header-container">
             <div class="header-content">
-                <h1>federico_atzori.phd</h1>
+                <h1>Federico Atzori, Ph.D.</h1>
                 <nav>
                     <ul>
                         <li><a href="index.html">home</a></li>
@@ -111,24 +111,38 @@
         <button class="theme-btn" onclick="setTheme('paper')">Paper</button>
     </div>
 
-    <div class="pixel-game">
-        <h3>career.timeline.exe</h3>
-        <div class="game-container" id="game">
-            <div class="ground"></div>
-            <div class="pixel-character" id="player"></div>
-            <div class="info-popup" id="popup"></div>
-        </div>
-        <div class="game-info">← → move</div>
-        <div class="mobile-controls">
-            <button onclick="moveLeft()">◀</button>
-            <button onclick="moveRight()">▶</button>
+    <div class="news-section">
+        <div class="news-box">
+            <h2 style="margin-bottom: 1.25rem; border-bottom: none; padding-bottom: 0; font-size: 1rem; color: var(--text-muted);">Recent news</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <span class="news-badge badge-pub">Publication</span>
+                    <span class="news-text"><a href="https://sabeconomics.org/journal/RePEc/beh/JBEPv1/articles/JBEP-9-2-4.pdf" target="_blank">Measuring Administrative Friction: A Transaction-Cost Framework for Sludge Audits</a> — accepted in <em>Journal of Behavioral Economics for Policy</em> (2026)</span>
+                </li>
+                <li class="news-item">
+                    <span class="news-badge badge-event">Upcoming</span>
+                    <span class="news-text"><a href="https://sites.google.com/a/uniroma1.it/cimeo/summer-schools/soleto-2025" target="_blank">Spring School on Behavioral Economics — 4th Ed.</a>, Soleto (ITA), Apr 30 – May 1, 2026</span>
+                </li>
+                <li class="news-item">
+                    <span class="news-badge badge-paper">Working paper</span>
+                    <span class="news-text"><a href="https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5350667" target="_blank">When Giving Justifies Gambling: Theory and Experimental Evidence on Prosocial Risk-taking</a> — Ballicu, Atzori, Pelligra (2025)</span>
+                </li>
+                <li class="news-item">
+                    <span class="news-badge badge-event">Presentation</span>
+                    <span class="news-text">15th Meeting of the Behavioral and Experimental Economics Network (BEEN), Rome — January 2026</span>
+                </li>
+                <li class="news-item">
+                    <span class="news-badge badge-pos">Position</span>
+                    <span class="news-text">Postdoctoral Fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a>, Sapienza University of Rome — ongoing</span>
+                </li>
+            </ul>
         </div>
     </div>
 
     <div class="main-container">
         <!-- Left Column: About Me -->
         <div class="left-column">
-            <h2 class="subtitle">behavioral_science & economics</h2>
+            <h2 class="subtitle">Behavioral science &amp; economics</h2>
 
             <p class="pronunciation">pronunciation: /feˈdeːriko aˈzoːri/</p>
             <p class="village-note">*surname refers to an ancient village in the Judicate of Cagliari</p>
@@ -142,7 +156,7 @@
             </div>
 
             <div class="section">
-                <h2>current_affiliations</h2>
+                <h2>Current affiliations</h2>
                 <ul class="affiliations">
                     <li>Postdoctoral Fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a>, Sapienza University</li>
                     <li>Post-Doctoral Fellow at <a href="https://web.unica.it/unica/en/dip_scienzeecoaziend.page" target="_blank">Dept. of Economics and Business Sciences</a>, University of Cagliari</li>
@@ -153,7 +167,7 @@
             <hr>
 
             <div class="location-box">
-                <h3>origin.location</h3>
+                <h3>Origin</h3>
                 <a href="https://earth.google.com/web/search/cagliari" target="_blank">→ google_earth</a>
                 <div class="sardinia-info">
                     <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
@@ -163,7 +177,7 @@
 
         <!-- Right Column: Research -->
         <div class="right-column" id="research">
-            <h2 class="subtitle">research.output</h2>
+            <h2 class="subtitle">Research output</h2>
 
             <div class="research-interests">
                 <strong>research_interests:</strong><br><br>
@@ -174,7 +188,7 @@
             </div>
 
             <div class="section">
-                <h3>publications.working_papers</h3>
+                <h3>Working papers</h3>
 
                 <table class="paper-table">
                     <thead>
@@ -233,77 +247,5 @@
         </div>
     </footer>
 
-    <script>
-        const player = document.getElementById("player");
-        const ground = document.querySelector(".ground");
-        const popup = document.getElementById("popup");
-
-        let worldOffset = 0;
-        let walkFrame = false;
-
-        const years = [
-            { year: "2015", x: 80, text: "Bachelor's Degree" },
-            { year: "2017-2019", x: 250, text: "Business Experience" },
-            { year: "2021", x: 400, text: "Master's Degree" },
-            { year: "2022-2023", x: 550, text: "Tilburg Visiting" },
-            { year: "2023", x: 650, text: "#1 Working Paper" },
-            { year: "2024", x: 750, text: "#1 Rejection" },
-            { year: "2025", x: 900, text: "PhD" },
-            { year: "2025-2026", x: 1000, text: "Post-Doc" }
-        ];
-
-        years.forEach(y => {
-            const marker = document.createElement("div");
-            marker.className = "year-marker";
-            marker.style.left = y.x + "px";
-
-            const label = document.createElement("div");
-            label.className = "year-label";
-            label.style.left = y.x + "px";
-            label.textContent = y.year;
-
-            ground.appendChild(marker);
-            ground.appendChild(label);
-        });
-
-        function updateWorld() {
-            ground.style.transform = `translateX(-${worldOffset}px)`;
-            checkYear();
-        }
-
-        function animateWalk() {
-            walkFrame = !walkFrame;
-            player.classList.toggle("walk1", walkFrame);
-            player.classList.toggle("walk2", !walkFrame);
-        }
-
-        function moveRight() {
-            worldOffset += 12;
-            animateWalk();
-            updateWorld();
-        }
-
-        function moveLeft() {
-            if (worldOffset > 0) {
-                worldOffset -= 12;
-                animateWalk();
-                updateWorld();
-            }
-        }
-
-        function checkYear() {
-            const playerPos = worldOffset + 50;
-            const found = years.find(y => Math.abs(y.x - playerPos) < 20);
-            popup.textContent = found ? found.text : '';
-            popup.style.display = found ? "block" : "none";
-        }
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowRight") moveRight();
-            if (e.key === "ArrowLeft") moveLeft();
-        });
-
-        updateWorld();
-    </script>
 </body>
 </html>

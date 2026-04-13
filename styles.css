@@ -142,16 +142,11 @@ header {
 }
 
 h1 {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--accent);
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.5px;
-}
-
-h1::before {
-    content: "$ ";
-    color: var(--prefix);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.01em;
 }
 
 /* ============================================================
@@ -176,15 +171,6 @@ nav a:hover {
     color: var(--accent);
 }
 
-nav a::before {
-    content: "[";
-    color: var(--prefix-nav);
-}
-
-nav a::after {
-    content: "]";
-    color: var(--prefix-nav);
-}
 
 /* ============================================================
    Terminal Component (homepage header)
@@ -245,29 +231,21 @@ nav a::after {
    Headings
    ============================================================ */
 h2 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     color: var(--accent);
     margin-bottom: 1.75rem;
-    font-weight: 400;
-    font-family: 'Courier New', monospace;
-}
-
-h2::before {
-    content: "# ";
-    color: var(--prefix);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
 }
 
 h3 {
-    font-size: 1.05rem;
+    font-size: 0.975rem;
     color: var(--blue);
     margin: 2rem 0 1rem;
-    font-weight: 400;
-    font-family: 'Courier New', monospace;
-}
-
-h3::before {
-    content: "## ";
-    color: var(--prefix);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
 }
 
 h4 {
@@ -279,20 +257,14 @@ h4 {
 
 /* Subtitle variant (same style as h2, used in homepage columns) */
 .subtitle {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     color: var(--accent);
     margin-bottom: 1.5rem;
-    font-weight: 400;
-    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
 }
-
-.subtitle::before {
-    content: "# ";
-    color: var(--prefix);
-}
-
-/* Exceptions: headings inside pixel game / special contexts */
-.pixel-game h3::before { content: none; }
 
 /* ============================================================
    Typography
@@ -348,6 +320,75 @@ hr {
     color: var(--text-muted);
     font-size: 0.9rem;
     line-height: 1.8;
+}
+
+/* ============================================================
+   Recent News Section (homepage)
+   ============================================================ */
+.news-section {
+    max-width: 1400px;
+    margin: 0 auto 0;
+    padding: 0 2rem;
+}
+
+.news-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.75rem 2.5rem;
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+    font-size: 0.875rem;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.news-badge {
+    flex-shrink: 0;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.68rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 0.15rem;
+}
+
+.badge-pub   { background: rgba(30,90,143,0.1); color: var(--blue); border: 1px solid rgba(30,90,143,0.2); }
+.badge-event { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(184,134,11,0.25); }
+.badge-paper { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+.badge-pos   { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
+
+.theme-hacker .badge-event { border-color: rgba(0,255,0,0.25); }
+
+.news-text {
+    color: var(--text-body);
+    line-height: 1.5;
+}
+
+.news-text a {
+    color: var(--blue);
+    border-bottom-color: transparent;
+}
+
+.news-text a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
 /* ============================================================
@@ -431,7 +472,6 @@ hr {
 }
 
 .location-box h3 { margin-top: 0; }
-.location-box h3::before { content: "### "; }
 
 .sardinia-info {
     margin-top: 1rem;
