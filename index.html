@@ -10,20 +10,6 @@
 </head>
 <body>
     <script>
-        // Restore saved theme before content renders
-        (function() {
-            const t = localStorage.getItem('theme');
-            if (t && t !== 'academic') document.body.className = 'theme-' + t;
-        })();
-
-        // Theme Switcher
-        function setTheme(theme) {
-            document.body.className = theme === 'academic' ? '' : 'theme-' + theme;
-            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            localStorage.setItem('theme', theme);
-        }
-
         // Terminal Animation
         const commands = [
             { cmd: 'whoami', output: 'federico_atzori' },
@@ -70,11 +56,6 @@
         }
 
         window.addEventListener('load', () => {
-            // Restore active theme button
-            const savedTheme = localStorage.getItem('theme') || 'academic';
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent.toLowerCase() === savedTheme);
-            });
             setTimeout(typeWriter, 1000);
         });
     </script>
@@ -104,12 +85,6 @@
         </div>
     </header>
 
-    <!-- Theme Switcher -->
-    <div class="theme-switcher">
-        <button class="theme-btn active" onclick="setTheme('academic')">Academic</button>
-        <button class="theme-btn" onclick="setTheme('hacker')">Hacker</button>
-        <button class="theme-btn" onclick="setTheme('paper')">Paper</button>
-    </div>
 
     <div class="news-section">
         <div class="news-box">

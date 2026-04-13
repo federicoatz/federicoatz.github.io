@@ -7,52 +7,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 
 /* ============================================================
-   CSS Custom Properties (Theme Variables)
+   CSS Custom Properties (Paper Theme — default)
    ============================================================ */
 :root {
-    /* Academic (light) — default */
-    --bg:            #fafafa;
-    --bg-subtle:     #f2f4f7;
-    --bg-card:       #ffffff;
-    --bg-inset:      #f5f7fa;
-    --text:          #1c1c1e;
-    --text-body:     #374151;
-    --text-muted:    #6b7280;
-    --text-dim:      #9ca3af;
-    --accent:        #b8860b;
-    --accent-soft:   #d4a01766;
-    --blue:          #1e5a8f;
-    --blue-light:    #3a7bbf;
-    --blue-dim:      #8ab3d4;
-    --border:        #e5e7eb;
-    --border-strong: #c5cfd9;
-    --header-bg:     #ffffff;
-    --prefix:        #c0cfd9;
-    --prefix-nav:    #aabfcc;
-}
-
-.theme-hacker {
-    --bg:            #000000;
-    --bg-subtle:     #0a0a0a;
-    --bg-card:       #0f0f0f;
-    --bg-inset:      #1a1a1a;
-    --text:          #e0e0e0;
-    --text-body:     #c0c0c0;
-    --text-muted:    #808080;
-    --text-dim:      #606060;
-    --accent:        #00ff00;
-    --accent-soft:   rgba(0,255,0,0.15);
-    --blue:          #6b9bc3;
-    --blue-light:    #6b9bc3;
-    --blue-dim:      #4a7a9f;
-    --border:        #1a3a52;
-    --border-strong: #2a5a72;
-    --header-bg:     #000000;
-    --prefix:        #1a3a52;
-    --prefix-nav:    #1a3a52;
-}
-
-.theme-paper {
     --bg:            #f5f0e8;
     --bg-subtle:     #ece6d9;
     --bg-card:       #fdf8f0;
@@ -123,9 +80,6 @@ header {
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
-.theme-hacker header {
-    box-shadow: none;
-}
 
 .header-container {
     max-width: 1400px;
@@ -374,7 +328,6 @@ hr {
 .badge-paper { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
 .badge-pos   { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
 
-.theme-hacker .badge-event { border-color: rgba(0,255,0,0.25); }
 
 .news-text {
     color: var(--text-body);
@@ -875,9 +828,6 @@ hr {
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-.theme-hacker .event-card:hover {
-    box-shadow: none;
-}
 
 /* Replaces the [event poster] placeholder */
 .event-banner {
@@ -1083,9 +1033,6 @@ hr {
     border: 1px solid rgba(184, 134, 11, 0.25);
 }
 
-.theme-hacker .tl-type--research {
-    border-color: rgba(0,255,0,0.25);
-}
 
 .tl-type--position {
     background: var(--bg-subtle);
@@ -1136,9 +1083,6 @@ hr {
     animation: pulse-academic 2.5s infinite;
 }
 
-.theme-hacker .map-marker {
-    animation: pulse-hacker 2.5s infinite;
-}
 
 .map-marker:hover {
     width: 18px;
@@ -1221,9 +1165,6 @@ hr {
     overflow: hidden;
 }
 
-.theme-hacker .game-container {
-    background: #000;
-}
 
 .ground {
     position: absolute;
@@ -1320,51 +1261,6 @@ hr {
     border-color: var(--accent);
 }
 
-/* ============================================================
-   Theme Switcher
-   ============================================================ */
-.theme-switcher {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1000;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 0.6rem;
-    border-radius: 6px;
-    display: flex;
-    gap: 0.35rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-}
-
-.theme-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--blue);
-    padding: 0.35rem 0.75rem;
-    cursor: pointer;
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    transition: all 0.2s;
-    border-radius: 3px;
-}
-
-.theme-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-.theme-btn.active {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-}
-
-.theme-hacker .theme-btn.active {
-    background: #003300;
-    color: #00ff00;
-    border-color: #00ff00;
-}
 
 /* ============================================================
    Footer
@@ -1530,9 +1426,4 @@ footer {
     .paper-table td { padding: 0.5rem; }
 
     .mobile-controls { display: flex; justify-content: center; }
-
-    .theme-switcher {
-        bottom: 1rem;
-        right: 1rem;
-    }
 }
