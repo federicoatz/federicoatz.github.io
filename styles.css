@@ -51,21 +51,6 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Cursor blink */
-.cursor {
-    display: inline-block;
-    width: 8px;
-    height: 14px;
-    background: var(--accent);
-    animation: blink 1s infinite;
-    margin-left: 2px;
-    vertical-align: middle;
-}
-
-@keyframes blink {
-    0%, 50%  { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
 
 /* ============================================================
    Header
@@ -126,30 +111,6 @@ nav a:hover {
 }
 
 
-/* ============================================================
-   Terminal Component (homepage header)
-   ============================================================ */
-.terminal-container {
-    background: var(--bg-inset);
-    border: 1px solid var(--border);
-    padding: 0.6rem 1rem;
-    margin: 0.75rem 0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-}
-
-.terminal-line {
-    color: var(--blue);
-    margin: 0.2rem 0;
-}
-
-.terminal-prompt {
-    color: var(--accent);
-}
-
-.terminal-output {
-    color: var(--text-muted);
-}
 
 /* ============================================================
    Layout Containers
@@ -269,8 +230,8 @@ hr {
    Recent News Section (homepage)
    ============================================================ */
 .news-section {
-    max-width: 1400px;
-    margin: 0 auto 0;
+    max-width: 1200px;
+    margin: 2rem auto 0;
     padding: 0 2rem;
 }
 
@@ -552,9 +513,12 @@ hr {
 
 .year-title {
     color: var(--accent);
-    font-size: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
     margin-bottom: 0.75rem;
-    font-family: 'Courier New', monospace;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* ============================================================

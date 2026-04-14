@@ -9,57 +9,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        // Terminal Animation
-        const commands = [
-            { cmd: 'whoami', output: 'federico_atzori' },
-            { cmd: 'cat research.txt', output: 'behavioral_economics | game_theory | experiments' },
-            { cmd: 'ls affiliations/', output: 'sapienza/ cagliari/ crenos/' },
-            { cmd: 'echo $INTERESTS', output: 'social_norms cooperation risk_attitudes' }
-        ];
-
-        let currentCommandIndex = 0;
-        let currentCharIndex = 0;
-        let isTypingCommand = true;
-
-        function typeWriter() {
-            const commandText = document.getElementById('command-text');
-            const outputText = document.getElementById('output-text');
-            const currentCmd = commands[currentCommandIndex];
-
-            if (isTypingCommand) {
-                if (currentCharIndex < currentCmd.cmd.length) {
-                    commandText.textContent += currentCmd.cmd.charAt(currentCharIndex);
-                    currentCharIndex++;
-                    setTimeout(typeWriter, 100);
-                } else {
-                    isTypingCommand = false;
-                    currentCharIndex = 0;
-                    setTimeout(typeWriter, 500);
-                }
-            } else {
-                if (currentCharIndex < currentCmd.output.length) {
-                    outputText.textContent += currentCmd.output.charAt(currentCharIndex);
-                    currentCharIndex++;
-                    setTimeout(typeWriter, 50);
-                } else {
-                    setTimeout(() => {
-                        currentCommandIndex = (currentCommandIndex + 1) % commands.length;
-                        commandText.textContent = '';
-                        outputText.textContent = '';
-                        currentCharIndex = 0;
-                        isTypingCommand = true;
-                        typeWriter();
-                    }, 3000);
-                }
-            }
-        }
-
-        window.addEventListener('load', () => {
-            setTimeout(typeWriter, 1000);
-        });
-    </script>
-
     <header>
         <div class="header-container">
             <div class="header-content">
@@ -74,13 +23,6 @@
                         <li><a href="otree.html">otree</a></li>
                     </ul>
                 </nav>
-            </div>
-
-            <div class="terminal-container">
-                <div class="terminal-line">
-                    <span class="terminal-prompt">$</span> <span id="command-text"></span><span class="cursor"></span>
-                </div>
-                <div class="terminal-line terminal-output" id="output-text"></div>
             </div>
         </div>
     </header>
@@ -129,11 +71,16 @@
             <hr>
 
             <h2>Research interests</h2>
-            <p class="bio-text" style="margin-top: 0.75rem;">Behavioral &amp; experimental economics — social norms, pro-social behaviors, risk attitudes, civil economy, gender, religion. Microeconomics — game theory. Sociology — economic sociology, embeddedness, social capital, informal economy. Psychology — economic psychology, groups &amp; organizations.</p>
+            <ul class="affiliations" style="margin-top: 0.75rem;">
+                <li>Behavioral &amp; experimental economics — social norms, pro-social behaviors, risk attitudes, civil economy, gender, religion</li>
+                <li>Microeconomics — game theory</li>
+                <li>Sociology — economic sociology, embeddedness, social capital, informal economy</li>
+                <li>Psychology — economic psychology, groups &amp; organizations</li>
+            </ul>
 
             <hr>
 
-            <h2>Working papers</h2>
+            <h2>Selected working papers</h2>
             <table class="paper-table" style="margin-top: 1rem;">
                 <thead>
                     <tr>
@@ -154,28 +101,19 @@
                         <td>SSRN</td>
                     </tr>
                     <tr>
-                        <td><a href="https://grins.it/output/identifying-electricity-consumption-patterns-using-high-frequency-data-volatility-and-self" target="_blank"><em>Identifying Electricity Consumption Patterns</em></a></td>
-                        <td>Atzori F., Corazzini L., Guerzoni M., Mantovani M. (2025)</td>
-                        <td>GRINS</td>
-                    </tr>
-                    <tr>
                         <td><a href="https://crenos.unica.it/crenos/publications/under-big-gods%E2%80%99-eyes-impact-religious-beliefs-altruistic-punishment-during-covid-19" target="_blank"><em>Under Big Gods' Eyes</em></a></td>
                         <td>Atzori F., Ballicu G., Pelligra V. (2025)</td>
                         <td>CRENoS</td>
                     </tr>
-                    <tr>
-                        <td><a href="https://econpapers.repec.org/paper/cnscnscwp/202407.htm" target="_blank"><em>Framed Norms</em></a></td>
-                        <td>Atzori F., Pelligra V. (2024)</td>
-                        <td>CRENoS</td>
-                    </tr>
                 </tbody>
             </table>
+            <p style="margin-top: 1rem; font-size: 0.875rem;"><a href="research.html">View all research</a></p>
 
             <hr>
 
             <div class="location-box">
                 <h3>Origin</h3>
-                <a href="https://earth.google.com/web/search/cagliari" target="_blank">→ google_earth</a>
+                <a href="https://earth.google.com/web/search/cagliari" target="_blank">View on Google Earth</a>
                 <div class="sardinia-info">
                     <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
                 </div>
@@ -196,7 +134,7 @@
             </div>
         </div>
         <div class="footer-attribution">
-            → Website created in collaboration with <a href="https://www.anthropic.com/claude" target="_blank">Claude AI</a>, developed by Anthropic
+            Website created in collaboration with <a href="https://www.anthropic.com/claude" target="_blank">Claude AI</a>, developed by Anthropic
         </div>
     </footer>
 
