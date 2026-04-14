@@ -160,18 +160,7 @@ nav a:hover {
     padding: 0 2rem;
 }
 
-.main-container {
-    max-width: 1400px;
-    margin: 2.5rem auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.content-box,
-.left-column,
-.right-column {
+.content-box {
     background: var(--bg-card);
     padding: 2.5rem;
     border: 1px solid var(--border);
@@ -1347,27 +1336,8 @@ footer {
    Responsive
    ============================================================ */
 @media (max-width: 1024px) {
-    .main-container {
-        grid-template-columns: 1fr;
-    }
-
     .events-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .timeline-line {
-        left: 2rem;
-    }
-
-    .timeline-item.left,
-    .timeline-item.right {
-        justify-content: flex-start;
-        padding-left: 5rem;
-        padding-right: 0;
-    }
-
-    .timeline-dot {
-        left: 2rem;
     }
 }
 
@@ -1382,17 +1352,6 @@ footer {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 0.4rem 0.75rem;
-    }
-
-    .main-container {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-        gap: 1rem;
-    }
-
-    .left-column,
-    .right-column {
-        padding: 1.5rem;
     }
 
     .container {
