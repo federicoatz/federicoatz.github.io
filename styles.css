@@ -279,6 +279,7 @@ hr {
 
 .badge-pub   { background: rgba(30,90,143,0.1); color: var(--blue); border: 1px solid rgba(30,90,143,0.2); }
 .badge-event { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(184,134,11,0.25); }
+.badge-wp    { background: rgba(40,120,60,0.1); color: #287838; border: 1px solid rgba(40,120,60,0.2); }
 .badge-paper { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
 .badge-pos   { background: var(--bg-subtle); color: var(--text-muted); border: 1px solid var(--border); }
 
