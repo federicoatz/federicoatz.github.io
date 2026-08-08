@@ -15,8 +15,11 @@ research.html   Publications and working papers
 teaching.html   Teaching activity
 events.html     Talks, conferences, events
 otree.html      Open-source oTree code for behavioral economics experiments
+404.html        Custom not-found page
 styles.css      Shared stylesheet for all pages
 favicon.svg     Site favicon
+robots.txt      Search engine crawl rules
+sitemap.xml     Sitemap for search engines
 CNAME           Custom domain config for GitHub Pages (federicoatz.com)
 ```
 
