@@ -8,6 +8,10 @@
     <meta property="og:description" content="Academic background, research positions, and career timeline of a behavioral economist based in Italy.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://federicoatz.com/about.html">
+    <meta property="og:image" content="https://federicoatz.com/profile.jpeg">
+    <meta property="og:image:alt" content="Federico Atzori">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://federicoatz.com/about.html">
     <title>About - Federico Atzori, Ph.D.</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,18 +32,26 @@
                         <li><a href="research.html">research</a></li>
                         <li><a href="teaching.html">teaching</a></li>
                         <li><a href="events.html">events</a></li>
-                        <li><a href="otree.html">otree</a></li>
-                        <li><a href="https://federicoatz.com/apriori-power-wizard/" target="_blank">power analysis</a></li>
+                        <li class="nav-tools">
+                            <details>
+                                <summary>tools</summary>
+                                <ul>
+                                    <li><a href="otree.html">otree</a></li>
+                                    <li><a href="https://federicoatz.com/apriori-power-wizard/" target="_blank">power analysis</a></li>
+                                </ul>
+                            </details>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
+    <main>
     <div class="container">
         <div class="content-box">
             <h2>About</h2>
-            <p>Behavioral and experimental economist based in Cagliari and Rome. Find me on <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">LinkedIn</a> or download my <a href="mailto:[redacted]">CV on request</a>.</p>
+            <p>Behavioral and experimental economist based in Cagliari and Rome. Find me on <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">LinkedIn</a> or request my CV there.</p>
 
             <hr>
 
@@ -47,8 +59,11 @@
 
             <div class="job-entry">
                 <div class="job-title">Post-Doctoral Researcher</div>
-                <div class="job-date">April 2024 – Ongoing | Multiple Institutions</div>
+                <div class="job-date">Postdoctoral research appointments | 2024–2026</div>
                 <div class="job-desc">
+                    <strong>University of Cagliari</strong> (May 2026 – Jul 2026)<br>
+                    Social impact evaluation of the “Combating Energy Poverty in Sardinia” project | PI: Prof. <a href="https://vittoriopelligra.wordpress.com/about/" target="_blank">Vittorio Pelligra</a><br><br>
+
                     <strong>Sapienza University of Rome</strong> (Dec 2025 – Sep 2026)<br>
                     Educational experiments and digital learning activities | PI: Prof. <a href="https://sites.google.com/uniroma1.it/lucapanaccione-eng/home" target="_blank">Luca Panaccione</a><br><br>
 
@@ -56,7 +71,7 @@
                     Italian North-South divide in trust, cooperation, and redistributive preferences | PI: Prof. <a href="https://www.wbs.ac.uk/about/person/andrea-isoni/" target="_blank">Andrea Isoni</a><br><br>
 
                     <strong>LIUC Cattaneo University</strong> (Dec 2025 – Jan 2026)<br>
-                    Biases in Markets for Experts: Theory and Experiments<br><br>
+                    Biases in Markets for Experts: Theory and Experiments | PI: Prof. Filippo Pavesi<br><br>
 
                     <strong>University of Milan – Bicocca</strong> (Oct 2024 – Sep 2025)<br>
                     Reducing emissions from electricity consumption (GRINS Programme) | PI: Prof. <a href="https://sites.google.com/site/lucacorazzini1/home" target="_blank">Luca Corazzini</a>
@@ -122,11 +137,11 @@
             <h3>Conferences &amp; presentations</h3>
 
             <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion()">
+                <button class="accordion-header" id="accordion-toggle" type="button" onclick="toggleAccordion(this)" aria-expanded="false" aria-controls="accordion-content">
                     <span class="accordion-title">Archive 2022–2026</span>
-                    <span class="accordion-icon" id="accordion-icon">▼</span>
-                </div>
-                <div class="accordion-content" id="accordion-content">
+                    <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-content" id="accordion-content" role="region" aria-labelledby="accordion-toggle" aria-hidden="true">
                     <div class="year-section">
                         <div class="year-title">2026</div>
                         <ul class="conference-list">
@@ -182,6 +197,8 @@
         </div>
     </div>
 
+    </main>
+
     <footer>
         <div class="footer-content">
             <div class="quote">
@@ -191,17 +208,19 @@
                 <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
                 <a href="https://scholar.google.com/citations?user=75wEW74AAAAJ" target="_blank">scholar</a>
                 <a href="https://orcid.org/0009-0005-1035-1087" target="_blank">orcid</a>
-                <a href="mailto:[redacted]">email</a>
             </div>
         </div>
     </footer>
 
     <script>
-        function toggleAccordion() {
-            const content = document.getElementById('accordion-content');
-            const icon = document.getElementById('accordion-icon');
-            content.classList.toggle('open');
-            icon.classList.toggle('open');
+        function toggleAccordion(button) {
+            const content = document.getElementById(button.getAttribute('aria-controls'));
+            const icon = button.querySelector('.accordion-icon');
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!isOpen));
+            content.setAttribute('aria-hidden', String(isOpen));
+            content.classList.toggle('open', !isOpen);
+            icon.classList.toggle('open', !isOpen);
         }
     </script>
     <script data-goatcounter="https://federicoatz.goatcounter.com/count"
