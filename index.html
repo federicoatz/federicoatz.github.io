@@ -16,7 +16,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
                 <nav>
                     <ul>
                         <li><a href="index.html" aria-current="page">home</a></li>
-                        <li><a href="about.html">about</a></li>
+                        <li><a href="about.html">academic profile</a></li>
                         <li><a href="research.html">research</a></li>
                         <li><a href="teaching.html">teaching</a></li>
                         <li><a href="events.html">events</a></li>
@@ -50,25 +50,30 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-text">
-                <h2 class="hero-title">Federico Atzori, <span class="accent">behavioral economist.</span></h2>
-                <p class="hero-lead">I use experiments to understand human behavior, cooperation, and social change.</p>
+                <div class="hero-identity">
+                    <p><strong>Federico Atzori</strong><br>pronunciation: /feˈdeːriko aˈzoːri/</p>
+                    <p><em>*surname refers to an ancient village in the Judicate of Cagliari</em></p>
+                </div>
+                <p class="hero-kicker">Behavioral &amp; experimental economics</p>
+                <h2 class="hero-title">What shapes our <span class="accent">choices?</span></h2>
+                <p class="hero-lead">I'm a researcher trying to understand decision-making, cooperation, public interventions, and creativity with AI.</p>
+                <a class="hero-about-link" href="about.html">Academic profile <span aria-hidden="true">→</span></a>
             </div>
             <div class="hero-photo" id="hero-photo">
                 <img src="profile.jpeg" alt="Federico Atzori"
                      onerror="this.style.display='none';document.getElementById('hero-photo').classList.add('no-img')">
                 <span class="hero-photo-fallback">FA</span>
-                <span class="hero-photo-tag">Federico Atzori</span>
             </div>
         </div>
     </section>
 
     <div class="news-section">
         <div class="news-box">
-            <h2 style="margin-bottom: 1.25rem; border-bottom: none; padding-bottom: 0; font-size: 1rem; color: var(--text-muted);">Recent news</h2>
+            <h2>Recent news</h2>
             <ul class="news-list">
                 <li class="news-item">
                     <span class="news-badge badge-pub">Publication</span>
-                    <span class="news-text"><a href="https://www.sciencedirect.com/science/article/pii/S2214804326001503" target="_blank">Creative Minds in the Age of AI. Personality Traits, AI Perception, and Creativity Tasks</a> — Atzori F., Corazzini L., Guarnieri A. (2026), <em>Journal of Behavioral and Experimental Economics</em>, 102659</span>
+                    <span class="news-text"><a href="https://www.sciencedirect.com/science/article/pii/S2214804326001503" target="_blank">Creative Minds in the Age of AI. Personality Traits, AI Perception, and Creativity Tasks</a> — Atzori F., Corazzini L., Guarnieri A. (2026), <em>Journal of Behavioral and Experimental Economics</em>, 102659, volume 125</span>
                 </li>
                 <li class="news-item">
                     <span class="news-badge badge-wp">Working paper</span>
@@ -76,54 +81,36 @@
                 </li>
                 <li class="news-item">
                     <span class="news-badge badge-wp">Working paper</span>
-                    <span class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7247658" target="_blank">A Priori Power Analysis Wizard: A Guided Interface for Choosing and Justifying Sample-Size Calculations in Behavioral Science</a> — Atzori F. (2026), SSRN 7247658. Companion paper to the <a href="https://federicoatz.com/apriori-power-wizard/" target="_blank">power analysis app</a></span>
+                    <span class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7247658" target="_blank">A Priori Power Analysis Wizard: A Guided Interface for Choosing and Justifying Sample-Size Calculations in Behavioral Science</a> — Atzori F. (2026), SSRN 7247658</span>
                 </li>
             </ul>
-        </div>
-    </div>
-
-    <div class="quick-links">
-        <div class="hero-actions">
-            <a class="btn btn--primary" href="research.html">Read my research <span class="arrow">→</span></a>
-            <a class="btn" href="otree.html">oTree code</a>
-            <a class="btn" href="https://federicoatz.com/apriori-power-wizard/" target="_blank">Power analysis app</a>
-            <a class="btn" href="about.html">About me</a>
-            <a class="btn" href="https://www.linkedin.com/in/federicoatzori/" target="_blank">Contact on LinkedIn</a>
+            <div class="hero-actions news-actions">
+                <a class="btn btn--primary" href="research.html">Read my research <span class="arrow">→</span></a>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="content-box">
-            <h2>Behavioral science &amp; economics</h2>
-
-            <p class="pronunciation">pronunciation: /feˈdeːriko aˈzoːri/</p>
-            <p class="village-note">*surname refers to an ancient village in the Judicate of Cagliari</p>
+            <h2>Who am I</h2>
 
             <div class="intro-box">
-                "An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment."
+                An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment.
             </div>
 
             <div class="bio-text">
-                <p>I'm a behavioral and experimental economist interested in how institutions, social contexts, and emerging technologies shape cooperation and collective outcomes. My research examines why promising reforms do not always scale, how the benefits of public interventions are distributed, and how artificial intelligence is changing creativity, reciprocity, and people's scope for voice and exit. Combining insights from economics, sociology, and psychology, I use laboratory and field methods to understand not only whether an intervention works, but for whom, under what conditions, and why.</p>
+                <p>Economics gives me the questions; experiments give me a way to test them. I look at the gap between the rules people face and the choices they make: why they cooperate, when norms matter, and how institutions or technology change the options on the table.</p>
+                <p>The method depends on the question. Sometimes it is theory or existing data; sometimes it means building an experiment and taking it to the lab or the field. Right now I am working on energy poverty, public interventions, creativity with AI, reciprocity, and the choice between speaking up and walking away.</p>
+                <p class="origin-note"><strong>Origin:</strong> <a href="https://earth.google.com/web/search/cagliari" target="_blank">Sardinia</a> (/sɑːrˈdɪniə), the second-largest island in the Mediterranean Sea after Sicily. Inhabited since the Paleolithic era (~20,000–10,000 years ago) and, for some, the mythical <em>Atlantis</em>.</p>
             </div>
+        </div>
 
-            <hr>
-
-            <h2>Academic affiliations</h2>
+        <div class="content-box">
+            <h2>Current Academic affiliations</h2>
             <ul class="affiliations">
                 <li>Postdoctoral Fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a>, Sapienza University</li>
                 <li>Postdoctoral Fellow at <a href="https://crenos.unica.it/index.php/federico-atzori" target="_blank">CRENoS</a>, University of Cagliari and Sassari</li>
             </ul>
-
-            <hr>
-
-            <div class="location-box">
-                <h3>Origin</h3>
-                <a href="https://earth.google.com/web/search/cagliari" target="_blank">View on Google Earth</a>
-                <div class="sardinia-info">
-                    <p><strong>Sardinia</strong> (/sɑːrˈdɪniə) — second-largest island in the Mediterranean Sea, after Sicily. Inhabited since the Paleolithic era (~20,000-10,000 years ago). For some, the mythical <em>Atlantis</em>.</p>
-                </div>
-            </div>
         </div>
     </div>
 
