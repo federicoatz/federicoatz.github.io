@@ -1792,6 +1792,71 @@ h3 { font-family: var(--font-body); color: #662119; }
 
 .origin-note strong { color: var(--accent); }
 
+.origin-copy {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.origin-copy p { flex: 1; }
+
+.origin-replay {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.1rem;
+    padding: 0.35rem 0.55rem;
+    border: 0;
+    border-radius: 7px;
+    color: var(--text-muted);
+    background: transparent;
+    font: 0.68rem/1 var(--font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.origin-replay span {
+    font-size: 0.95rem;
+    transition: transform 0.35s ease;
+}
+
+.origin-replay:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.origin-replay:hover span { transform: rotate(-180deg); }
+
+.origin-replay:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.origin-map {
+    margin: 1rem 0 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: 12px;
+    background: #000;
+}
+
+.origin-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+@media (max-width: 620px) {
+    .origin-copy { display: block; }
+    .origin-replay { margin: 0.65rem 0 0 -0.55rem; }
+    .origin-map { margin-top: 0.75rem; }
+}
+
 .job-entry,
 .education-entry,
 .project-item,
