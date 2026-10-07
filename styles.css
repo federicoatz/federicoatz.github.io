@@ -650,31 +650,11 @@ hr {
 .section h2 { font-size: 1.3rem; margin-bottom: 1.2rem; }
 .section h3 { font-size: 1rem; margin: 1.5rem 0 1rem; }
 
-/* Affiliations list */
-.affiliations { list-style: none; padding-left: 0; }
-
-.affiliations li {
-    padding: 0.5rem 0 0.5rem 1.6rem;
-    position: relative;
-    font-size: 0.94rem;
-    color: var(--text-body);
-}
-
-.affiliations li::before {
-    content: "›";
-    position: absolute;
-    left: 0;
-    top: 0.42rem;
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-weight: 700;
-}
-
-.affiliations a, .section a {
+.section a {
     color: var(--blue);
     border-bottom-color: transparent;
 }
-.affiliations a:hover, .section a:hover {
+.section a:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
 }
@@ -872,6 +852,85 @@ hr {
 /* ============================================================
    Research Page
    ============================================================ */
+.publication-group {
+    margin: 1.5rem 0;
+    padding: 0.5rem 1.4rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+}
+
+.publication-group--working-papers { border-left-color: #d1a21d; }
+
+.research-subsection { margin-top: 2rem; }
+
+.publication-group .section-subhead { margin-top: 0.5rem; }
+.publication-group .publication-list { margin-bottom: 0; }
+.publication-group .table-scroll { margin-bottom: 0.5rem; }
+
+.publication-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 1.5rem;
+}
+
+.publication-list li {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-body);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    text-indent: -1.5rem;
+}
+.publication-list li:last-child { border-bottom: 0; }
+.publication-list a { color: var(--blue); }
+
+.study-type {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.12rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-inset);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.6;
+    text-indent: 0;
+}
+
+.publication-abstract {
+    margin-top: 0.55rem;
+    text-indent: 0;
+}
+
+.abstract-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.75rem;
+}
+
+.publication-abstract summary {
+    width: fit-content;
+    color: var(--blue);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.publication-abstract summary:hover { color: var(--accent); }
+.publication-abstract p {
+    margin-top: 0.6rem;
+    padding: 0.8rem 1rem;
+    background: var(--bg-inset);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    text-align: justify;
+    text-indent: 0;
+}
+
 .other-publications { list-style: none; padding-left: 0; }
 
 .other-publications li {
@@ -1626,7 +1685,7 @@ nav a::after { height: 1px; background: var(--accent); }
     box-shadow: var(--shadow);
 }
 
-.hero { padding-top: 4.25rem; padding-bottom: 2.75rem; }
+.hero { padding-top: 2.5rem; padding-bottom: 2.75rem; }
 
 .hero-inner {
     grid-template-columns: 1.45fr 0.72fr;
@@ -1655,13 +1714,20 @@ nav a::after { height: 1px; background: var(--accent); }
 }
 
 .hero h2.hero-title {
-    max-width: 10ch;
-    font-size: clamp(3.8rem, 7vw, 5.8rem);
+    max-width: none;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    font-size: clamp(3.2rem, 6.5vw, 5.2rem);
     font-weight: 500;
     line-height: 0.94;
     letter-spacing: -0.045em;
     text-wrap: balance;
     animation: none;
+}
+
+.hero h2.hero-title::after {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .hero-title .accent {
@@ -1672,7 +1738,7 @@ nav a::after { height: 1px; background: var(--accent); }
 
 .hero-lead {
     max-width: 52ch;
-    margin-bottom: 1rem;
+    margin-bottom: 1.4rem;
     font-size: 1.02rem;
     line-height: 1.55;
     color: var(--text-body);
@@ -1999,7 +2065,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .hero { padding-top: 3.5rem; }
-    .hero h2.hero-title { font-size: clamp(3rem, 15vw, 4.6rem); }
+    .hero { padding-top: 2rem; }
+    .hero h2.hero-title {
+        max-width: 16ch;
+        margin-bottom: 2rem;
+        font-size: clamp(2.8rem, 12vw, 4.2rem);
+    }
     .content-box { padding: 1.75rem 1.4rem; }
 }
