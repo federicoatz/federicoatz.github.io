@@ -193,6 +193,7 @@ hr { margin: 3rem 0; border: 0; border-top: 1px solid var(--line); }
 .timeline-detail { display: grid; grid-template-columns: 1fr auto; gap: .3rem 1rem; }
 .timeline-detail + .timeline-detail { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--line); }
 .timeline-detail strong { line-height: 1.35; }
+.timeline-detail .degree-title { justify-self: start; max-width: 100%; padding: .32rem .58rem .36rem; border: 1px solid rgba(122,31,43,.12); border-radius: 7px; background: var(--blue-soft); color: var(--blue); font-family: var(--display); font-size: 1.08rem; font-weight: 600; letter-spacing: -.012em; }
 .timeline-period { color: var(--muted); font: .67rem/1.45 var(--mono); text-align: right; }
 .timeline-detail p { grid-column: 1/-1; font-size: .86rem; line-height: 1.6; }
 
