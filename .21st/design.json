@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "project": {
+    "name": "federicoatz.github.io",
+    "productType": "academic portfolio",
+    "stack": [
+      "html",
+      "css",
+      "javascript"
+    ]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [
+      "assets"
+    ],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "background": "#f5ead8",
+      "surface": "#fff9ee",
+      "foreground": "#2c1912",
+      "coffee": "#5a3b2f",
+      "accent": "#7a1f2b",
+      "highlight": "#a87416"
+    },
+    "typography": {
+      "display": "Newsreader",
+      "body": "IBM Plex Sans"
+    },
+    "spacing": {
+      "character": "spacious editorial rhythm"
+    },
+    "radius": {
+      "default": "13px",
+      "feature": "22px"
+    },
+    "shadows": {
+      "default": "soft low-contrast elevation"
+    },
+    "motion": {
+      "level": "moderate",
+      "principles": [
+        "transform and opacity only",
+        "one-shot viewport reveals",
+        "reduced-motion fallback"
+      ]
+    },
+    "density": "spacious"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Preserve factual academic content",
+      "Maintain visible keyboard focus",
+      "Respect prefers-reduced-motion",
+      "Keep the site dependency-free and compatible with GitHub Pages"
+    ],
+    "avoid": [
+      "Excessive glassmorphism",
+      "Continuous decorative motion",
+      "Generic dashboard cards",
+      "React-only components in the static site"
+    ]
+  },
+  "decisions": [
+    {
+      "name": "Behavioral research studio",
+      "rationale": "An editorial Swiss-inspired system balances academic authority with a distinctive, contemporary personality."
+    },
+    {
+      "name": "Measured native motion",
+      "rationale": "Use staggered entrances, scroll progress, portrait depth, and micro-interactions without migrating the static site to React."
+    },
+    {
+      "name": "Warm archival palette",
+      "rationale": "Warm cream surfaces and coffee typography create an editorial base; burgundy carries primary actions and golden ochre adds restrained emphasis."
+    }
+  ],
+  "evidence": [
+    "Existing academic content and navigation",
+    "UI/UX Pro Max design-system recommendation",
+    "21st project-aware build and review workflow",
+    "Framer Motion principles for variants, scroll, transforms, gestures, and reduced motion"
+  ],
+  "generatedAt": "2026-10-09T19:36:54.564Z"
+}

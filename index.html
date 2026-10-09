@@ -8,7 +8,7 @@
     <meta property="og:description" content="Behavioral economist studying social norms, cooperation, and experimental economics.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://federicoatz.com/">
-    <meta property="og:image" content="https://federicoatz.com/profile.jpeg">
+    <meta property="og:image" content="https://federicoatz.com/profile.png">
     <meta property="og:image:alt" content="Federico Atzori">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://federicoatz.com/">
@@ -36,7 +36,7 @@
                                 <summary>tools</summary>
                                 <ul>
                                     <li><a href="otree.html">otree</a></li>
-                                    <li><a href="https://federicoatz.com/apriori-power-wizard/" target="_blank">power analysis</a></li>
+                                    <li><a href="https://federicoatz.com/apriori-power-wizard/" target="_blank" rel="noopener noreferrer">power analysis</a></li>
                                 </ul>
                             </details>
                         </li>
@@ -47,81 +47,104 @@
     </header>
 
     <main>
-    <section class="hero">
-        <h2 class="hero-title">What shapes our <span class="accent">choices?</span></h2>
-        <div class="hero-inner">
-            <div class="hero-text">
-                <div class="hero-identity">
-                    <p><strong>Federico Atzori</strong><br>pronunciation: /feˈdeːriko aˈzoːri/</p>
-                    <p><em>*surname refers to an ancient village in the Judicate of Cagliari</em></p>
-                </div>
-                <p class="hero-lead">I'm a researcher trying to understand decision-making, cooperation, public interventions, and creativity with AI. I am currently a postdoctoral fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank">CIMEO</a> (Sapienza University) and <a href="https://crenos.unica.it/index.php/federico-atzori" target="_blank">CRENoS</a> (University of Cagliari and Sassari).</p>
-                <a class="hero-about-link" href="about.html">Academic profile <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="hero-photo" id="hero-photo">
-                <img src="profile.jpeg" alt="Federico Atzori"
-                     onerror="this.style.display='none';document.getElementById('hero-photo').classList.add('no-img')">
-                <span class="hero-photo-fallback">FA</span>
-            </div>
-        </div>
-    </section>
-
-    <div class="news-section">
-        <div class="news-box">
-            <h2>Recent news</h2>
-            <ul class="news-list">
-                <li class="news-item">
-                    <span class="news-badge badge-pub">Publication</span>
-                    <span class="news-text"><a href="https://www.sciencedirect.com/science/article/pii/S2214804326001503" target="_blank">Creative Minds in the Age of AI. Personality Traits, AI Perception, and Creativity Tasks</a> — Atzori F., Corazzini L., Guarnieri A. (2026), <em>Journal of Behavioral and Experimental Economics</em>, 102659, volume 125</span>
-                </li>
-                <li class="news-item">
-                    <span class="news-badge badge-wp">Working paper</span>
-                    <span class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7456540" target="_blank">The Unpriced Cost of Replication: Evidential Fragility and the Allocation of Verification Effort</a> — Atzori F. (2026), SSRN 7456540</span>
-                </li>
-                <li class="news-item">
-                    <span class="news-badge badge-wp">Working paper</span>
-                    <span class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7247658" target="_blank">A Priori Power Analysis Wizard: A Guided Interface for Choosing and Justifying Sample-Size Calculations in Behavioral Science</a> — Atzori F. (2026), SSRN 7247658</span>
-                </li>
-            </ul>
-            <div class="hero-actions news-actions">
-                <a class="btn btn--primary" href="research.html">Read my research <span class="arrow">→</span></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="content-box">
-            <h2>Who am I</h2>
-
-            <div class="intro-box">
-                An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment.
-            </div>
-
-            <div class="bio-text">
-                <p>Economics gives me the questions; experiments give me a way to test them. I look at the gap between the rules people face and the choices they make: why they cooperate, when norms matter, and how institutions or technology change the options on the table.</p>
-                <p>The method depends on the question. Sometimes it is theory or existing data; sometimes it means building an experiment and taking it to the lab or the field. Right now I am working on energy poverty, public interventions, creativity with AI, reciprocity, and the choice between speaking up and walking away.</p>
-                <aside class="origin-note">
-                    <div class="origin-copy">
-                        <p><strong>Origin:</strong> <a href="https://earth.google.com/web/search/cagliari" target="_blank" rel="noopener">Sardinia</a> (/sɑːrˈdɪniə), the second-largest island in the Mediterranean Sea after Sicily. Inhabited since the Paleolithic era (~20,000–10,000 years ago) and, for some, the mythical <em>Atlantis</em>.</p>
-                        <button class="origin-replay" type="button" aria-label="Replay the map animation">
-                            <span aria-hidden="true">↻</span> Replay
-                        </button>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
+            <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <p class="hero-kicker"><span></span> Behavioral &amp; experimental economics</p>
+                    <h2 class="hero-title" id="hero-title">What shapes<br>our <span class="accent">choices?</span></h2>
+                    <p class="hero-lead">I study how people cooperate, respond to institutions, and make decisions when social norms, public interventions, and new technologies reshape the options in front of them.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn--primary" href="research.html">Explore the research <span class="arrow" aria-hidden="true">↗</span></a>
+                        <a class="btn btn--quiet" href="about.html">Academic profile <span class="arrow" aria-hidden="true">→</span></a>
                     </div>
+                    <div class="hero-identity">
+                        <p><span>Currently</span> Postdoctoral fellow at <a href="https://sites.google.com/a/uniroma1.it/cimeo/" target="_blank" rel="noopener noreferrer">CIMEO</a> and <a href="https://crenos.unica.it/index.php/federico-atzori" target="_blank" rel="noopener noreferrer">CRENoS</a></p>
+                        <p><span>Based in</span> Rome ↔ Cagliari, Italy</p>
+                    </div>
+                </div>
 
-                    <figure class="origin-map">
-                        <video class="origin-video" muted playsinline preload="metadata"
-                               poster="assets/video/sardegna-earth.jpg"
-                               aria-label="Google Earth animation zooming from the world to Sardinia">
-                            <source src="assets/video/sardegna-earth.mp4" type="video/mp4">
-                            Your browser does not support embedded video.
-                        </video>
-                    </figure>
-                </aside>
+                <div class="hero-visual" data-parallax>
+                    <div class="portrait-shell">
+                        <div class="portrait-index" aria-hidden="true">01 / FIELD NOTES</div>
+                        <div class="hero-photo" id="hero-photo">
+                            <img src="profile.png" alt="Portrait of Federico Atzori" width="800" height="800"
+                                 onerror="this.style.display='none';document.getElementById('hero-photo').classList.add('no-img')">
+                            <span class="hero-photo-fallback">FA</span>
+                        </div>
+                        <div class="portrait-card">
+                            <span class="portrait-card__label">Research question</span>
+                            <strong>Rules change.<br>What do people do?</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <ul class="topic-rail" aria-label="Research areas">
+                <li>social norms</li><li>cooperation</li><li>field experiments</li><li>AI &amp; creativity</li><li>public policy</li>
+            </ul>
+        </section>
 
-    </div>
+        <section class="news-section" aria-labelledby="news-title">
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">Latest work</p>
+                    <h2 id="news-title">New ideas, in progress.</h2>
+                </div>
+                <a class="text-link" href="research.html">All research <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="news-box">
+                <ul class="news-list">
+                    <li class="news-item">
+                        <div class="news-meta"><span class="news-badge badge-pub">Publication</span><span>2026</span></div>
+                        <span class="news-text"><a href="https://www.sciencedirect.com/science/article/pii/S2214804326001503" target="_blank" rel="noopener noreferrer">Creative Minds in the Age of AI</a><small>Personality Traits, AI Perception, and Creativity Tasks · <em>Journal of Behavioral and Experimental Economics</em></small></span>
+                        <span class="news-arrow" aria-hidden="true">↗</span>
+                    </li>
+                    <li class="news-item">
+                        <div class="news-meta"><span class="news-badge badge-wp">Working paper</span><span>2026</span></div>
+                        <span class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7456540" target="_blank" rel="noopener noreferrer">The Unpriced Cost of Replication</a><small>Evidential Fragility and the Allocation of Verification Effort · SSRN 7456540</small></span>
+                        <span class="news-arrow" aria-hidden="true">↗</span>
+                    </li>
+                    <li class="news-item">
+                        <div class="news-meta"><span class="news-badge badge-wp">Working paper</span><span>2026</span></div>
+                        <span class="news-text"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7247658" target="_blank" rel="noopener noreferrer">A Priori Power Analysis Wizard</a><small>A guided interface for choosing and justifying sample-size calculations · SSRN 7247658</small></span>
+                        <span class="news-arrow" aria-hidden="true">↗</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
+        <section class="profile-section" aria-labelledby="profile-title">
+            <div class="profile-copy">
+                <p class="section-kicker">Behind the papers</p>
+                <h2 id="profile-title">Economics gives me the questions. Experiments give me a way to test them.</h2>
+                <div class="intro-box">An economist who enjoys putting people in weird decision-making situations, building oTree experiments that are way more complex than they need to be, and running everything on servers that only crash at the worst possible moment.</div>
+                <div class="bio-text">
+                    <p>I look at the gap between the rules people face and the choices they make: why they cooperate, when norms matter, and how institutions or technology change the options on the table.</p>
+                    <p>The method depends on the question. Sometimes it is theory or existing data; sometimes it means building an experiment and taking it to the lab or the field.</p>
+                </div>
+                <a class="text-link" href="about.html">Follow the academic path <span aria-hidden="true">→</span></a>
+            </div>
+
+            <aside class="origin-note">
+                <div class="origin-copy">
+                    <div>
+                        <p class="section-kicker">Origin / 39.2238° N</p>
+                        <p><strong>Sardinia</strong> (/sɑːrˈdɪniə), the second-largest island in the Mediterranean Sea and, for some, the mythical <em>Atlantis</em>.</p>
+                    </div>
+                    <button class="origin-replay" type="button" aria-label="Replay the map animation">
+                        <span aria-hidden="true">↻</span> Replay
+                    </button>
+                </div>
+                <figure class="origin-map">
+                    <video class="origin-video" muted playsinline preload="metadata">
+                        <source src="assets/video/sardegna-earth.mp4" type="video/mp4">
+                        Your browser does not support embedded video.
+                    </video>
+                    <figcaption><span>World</span><span>Cagliari, Sardinia</span></figcaption>
+                </figure>
+            </aside>
+        </section>
     </main>
 
     <footer>
@@ -130,9 +153,9 @@
                 "I'm here to play games." — G. Charness
             </div>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank">linkedin</a>
-                <a href="https://scholar.google.com/citations?user=75wEW74AAAAJ" target="_blank">scholar</a>
-                <a href="https://orcid.org/0009-0005-1035-1087" target="_blank">orcid</a>
+                <a href="https://www.linkedin.com/in/federicoatzori/" target="_blank" rel="noopener noreferrer">linkedin</a>
+                <a href="https://scholar.google.com/citations?user=75wEW74AAAAJ" target="_blank" rel="noopener noreferrer">scholar</a>
+                <a href="https://orcid.org/0009-0005-1035-1087" target="_blank" rel="noopener noreferrer">orcid</a>
             </div>
         </div>
         <div class="footer-attribution">
@@ -142,26 +165,6 @@
 
     <script data-goatcounter="https://federicoatz.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
-    <script>
-        (() => {
-            const video = document.querySelector('.origin-video');
-            const replay = document.querySelector('.origin-replay');
-            if (!video) return;
-
-            const play = () => {
-                video.currentTime = 0;
-                video.play().catch(() => {});
-            };
-
-            const observer = new IntersectionObserver(([entry]) => {
-                if (!entry.isIntersecting) return;
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) play();
-                observer.disconnect();
-            }, { threshold: 0.35 });
-
-            observer.observe(video);
-            replay?.addEventListener('click', play);
-        })();
-    </script>
+    <script src="site.js"></script>
 </body>
 </html>
