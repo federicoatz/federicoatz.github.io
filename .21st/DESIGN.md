@@ -30,7 +30,7 @@ Generated from project sources at 2026-10-09T19:36:54.564Z.
 - Foreground coffee: `#2c1912`
 - Body coffee: `#5a3b2f`
 - Accent burgundy: `#7a1f2b`
-- Highlight ochre: `#a87416`
+- Highlight burnt orange: `#b94f1f`
 - Display: Newsreader
 - Body: IBM Plex Sans
 
@@ -52,7 +52,7 @@ Generated from project sources at 2026-10-09T19:36:54.564Z.
 
 - **Behavioral research studio:** editorial, Swiss-inspired art direction with academic credibility.
 - **Measured native motion:** staggered reveals, scroll progress, portrait depth, and small interaction feedback.
-- **Warm archival palette:** cream and coffee establish the editorial base; burgundy leads actions and ochre supplies restrained highlights.
+- **Warm archival palette:** cream and coffee establish the editorial base; burgundy leads actions and burnt orange supplies restrained highlights.
 - **Unified degree highlight:** Ph.D., Master's, and Bachelor's titles share one restrained burgundy treatment on a delicate tinted background.
 
 - None recorded

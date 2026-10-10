@@ -25,7 +25,7 @@
       "foreground": "#2c1912",
       "coffee": "#5a3b2f",
       "accent": "#7a1f2b",
-      "highlight": "#a87416"
+      "highlight": "#b94f1f"
     },
     "typography": {
       "display": "Newsreader",
@@ -81,7 +81,7 @@
     },
     {
       "name": "Warm archival palette",
-      "rationale": "Warm cream surfaces and coffee typography create an editorial base; burgundy carries primary actions and golden ochre adds restrained emphasis."
+      "rationale": "Warm cream surfaces and coffee typography create an editorial base; burgundy carries primary actions and burnt orange adds restrained emphasis."
     },
     {
       "name": "Unified degree highlight",
