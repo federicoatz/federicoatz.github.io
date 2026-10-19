@@ -179,6 +179,10 @@ hr { margin: 3rem 0; border: 0; border-top: 1px solid var(--line); }
 .job-entry:hover, .education-entry:hover, .project-item:hover, .thesis-item:hover, .lecture-entry:hover, .code-card:hover { transform: translateY(-3px); border-color: rgba(122,31,43,.34); box-shadow: 0 14px 34px rgba(67,40,27,.1); }
 .job-title, .lecture-title, .code-title, .institution { margin-bottom: .3rem; color: var(--ink); font-weight: 600; }
 .job-date, .lecture-desc, .code-description, .project-desc { color: var(--muted); font-size: .88rem; }
+
+/* Reusable labels for teaching formats and session counts. */
+.teaching-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+.teaching-tag { display: inline-flex; padding: .2rem .6rem; border: 1px solid var(--line); border-radius: 999px; color: var(--blue); background: var(--paper); font: .63rem/1.4 var(--mono); }
 .code-link { display: inline-flex; margin-top: .75rem; color: var(--blue); font: 600 .72rem/1 var(--mono); }
 .code-link::after { content: ' ↗'; }
 .citation { border-left: 3px solid var(--coral); color: var(--muted); font: italic .78rem/1.65 var(--mono); }
