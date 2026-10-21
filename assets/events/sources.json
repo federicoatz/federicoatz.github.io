@@ -1,0 +1,27 @@
+{
+  "spring": {
+    "image": "https://www.italia.it/content/dam/tdh/en/destinations/puglia/soleto/media/Soleto.jpg",
+    "source": "https://www.italia.it/en/puglia/soleto",
+    "description": "Location photograph; not a photograph of the event."
+  },
+  "summer": {
+    "image": "https://cdn-processed.tmatic.travel/7693f842-9bf2-4d97-bbf0-0b73ad4635e8.jpg",
+    "source": "https://tmatic.travel/en/view/story/piazza-garibaldi-piazza-castello_kvJCANv/it",
+    "description": "Location photograph; not a photograph of the event."
+  },
+  "soleto": {
+    "image": "https://www.comune.soleto.le.it/images/monumenti/soleto_centro_storico_28.finale.jpg",
+    "source": "https://www.comune.soleto.le.it/vivere-il-comune/territorio/da-visitare/item/palazzo-blanco-della-zecca",
+    "description": "Location photograph; not a photograph of the event."
+  },
+  "workshop": {
+    "image": "https://www.unica.it/sites/default/files/2024-12/IMG_2120.JPG",
+    "source": "https://www.unica.it/it/societa-e-territorio/musei",
+    "description": "Location photograph; not a photograph of the event."
+  },
+  "been": {
+    "image": "https://sites.unica.it/beencagliari/files/2025/05/cagliari-3671983_1920-1.jpg",
+    "source": "https://sites.unica.it/beencagliari/",
+    "description": "Location photograph; not a photograph of the event."
+  }
+}
