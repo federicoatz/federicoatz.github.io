@@ -388,3 +388,31 @@ footer { margin-top: auto; padding: 3rem 0 1.5rem; color: rgba(255,255,255,.7); 
     .js .reveal, .js .hero-kicker, .js .hero-title, .js .hero-lead, .js .hero-actions, .js .hero-identity, .js .portrait-shell { opacity: 1; transform: none; }
     .scroll-progress { display: none; }
 }
+
+/* Featured research tool */
+.featured-tool { padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--line-strong); border-top: 3px solid var(--blue); background: var(--paper-bright); }
+.featured-tool-intro { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.featured-tool-kicker { margin-bottom: .8rem; color: var(--blue); font: 600 .62rem/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.featured-tool h3 { margin: 0 0 .6rem; font: 500 clamp(1.8rem, 3.5vw, 2.6rem)/1.1 var(--display); letter-spacing: -.03em; }
+.featured-tool-lead { color: var(--ink); font-size: 1.05rem; }
+.featured-tool-description { max-width: 80ch; margin: 1.2rem 0 1.8rem; font-size: .9rem; }
+.featured-tool-button { flex-shrink: 0; display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; color: var(--paper-bright); background: var(--blue); font: 600 .72rem/1.3 var(--mono); transition: background .2s ease; }
+.featured-tool-button:hover { color: var(--paper-bright); background: var(--blue-dark); }
+.featured-tool-preview { display: block; padding: clamp(.5rem, 2vw, 1.5rem); border: 1px solid var(--line); background: var(--paper-deep); }
+.featured-tool-preview img { display: block; width: 100%; height: auto; border: 1px solid var(--line); box-shadow: 0 10px 25px rgba(67,40,27,.08); }
+.featured-tool-caption { margin-top: .65rem; color: var(--muted); font-size: .72rem; }
+.featured-tool-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.featured-tool-features h4 { margin-bottom: .55rem; color: var(--ink); font: 600 .85rem/1.4 var(--sans); }
+.featured-tool-features p { color: var(--muted); font-size: .82rem; }
+.featured-tool-links { display: flex; flex-wrap: wrap; gap: .6rem 1.8rem; margin-top: 1.5rem; padding-top: .75rem; border-top: 1px solid var(--line); }
+@media (max-width: 700px) {
+    .featured-tool-intro { align-items: flex-start; flex-direction: column; }
+    .featured-tool-features { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* Software citations alongside repository links. */
+.tool-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.8rem; margin-top: .75rem; }
+.tool-actions .code-link { margin-top: 0; }
+.tool-citation { display: contents; }
+.tool-citation summary { color: var(--blue); font: 600 .72rem/1.4 var(--mono); cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.tool-citation p { flex-basis: 100%; padding: 1rem; border-left: 3px solid var(--coral); background: var(--paper); color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
