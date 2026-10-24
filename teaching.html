@@ -30,9 +30,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=teaching-1">
 </head>
-<body>
+<body class="teaching-page">
 
     <header>
         <div class="header-container">
@@ -62,109 +62,92 @@
 
     <main>
     <div class="container">
-        <div class="content-box">
-            <h2>Teaching</h2>
-
-            <h3>Lectures &amp; short courses</h3>
-
-            <div class="year-section">
-                <div class="year-title">2027</div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">Campus Economia Civile</div>
-                    <div class="lecture-desc">Game Theory, Cooperation, and Team Strategy</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Short course</span></div>
-                </div>
+        <div class="teaching-intro">
+            <p class="section-kicker">Behavioral &amp; experimental economics</p>
+            <div class="teaching-opening"><h2>Teaching<span aria-hidden="true">.</span></h2>
+                <p>Lectures, short courses<br>&amp; teaching assistance.</p>
             </div>
-
-            <div class="year-section">
-                <div class="year-title">2026</div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">LUISS Guido Carli</div>
-                    <div class="lecture-desc">Behavioral Economics: game theory, asymmetric information, social norms, and behavioral policy design (Master's course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">3 lectures</span></div>
-                </div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">University of Cagliari</div>
-                    <div class="lecture-desc">Social Preferences and Cooperation (Ph.D. course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">1 lecture</span><span class="teaching-tag">1 lab</span></div>
-                </div>
-
-            </div>
-
-            <div class="year-section">
-                <div class="year-title">2025</div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">Summer School on Experimetrics &amp; Behavioral Economics</div>
-                    <div class="lecture-desc">Social Norms Evaluation (6h course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Short course</span></div>
-                </div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">University of Cagliari</div>
-                    <div class="lecture-desc">Social Preferences and Cooperation (Ph.D. course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
-                </div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">University of Cagliari</div>
-                    <div class="lecture-desc">Behavioral Economics: Nudge and nudging (Master course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
-                </div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">University of Cagliari</div>
-                    <div class="lecture-desc">Behavioral Public Policy for Public Administration (Master course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
-                </div>
-            </div>
-
-            <div class="year-section">
-                <div class="year-title">2024</div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">Summer School on Experimetrics &amp; Behavioral Economics</div>
-                    <div class="lecture-desc">oTree Programming (6h course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Short course</span></div>
-                </div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">University of Cagliari</div>
-                    <div class="lecture-desc">Introduction to Game Theory (Microeconomics Course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
-                </div>
-
-                <div class="lecture-entry">
-                    <div class="lecture-title">University of Cagliari</div>
-                    <div class="lecture-desc">Behavioral Public Policy for Public Administration (Master course)</div>
-                    <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
-                </div>
-            </div>
+            <nav class="teaching-directory" aria-label="Teaching sections">
+                <a href="#lectures"><span>01</span> Lectures &amp; short courses <span aria-hidden="true">↓</span></a>
+                <a href="#teaching-assistant"><span>02</span> Teaching assistant <span aria-hidden="true">↓</span></a>
+            </nav>
         </div>
-
-        <div class="content-box teaching-assistant">
-            <div class="ta-heading">
-                <h3>Teaching assistant</h3>
-                <p>University of Cagliari</p>
-            </div>
-            <ul class="ta-courses">
-                <li>
-                    <div class="ta-course">Microeconomics</div>
-                    <span class="ta-period" aria-label="Academic years 2022–2023 and 2023–2024">2022–2024</span>
-                </li>
-                <li>
-                    <div class="ta-course">Microeconomics <span class="ta-format">Blended course</span></div>
-                    <span class="ta-period" aria-label="Academic years 2021–2022, 2022–2023 and 2023–2024">2021–2024</span>
-                </li>
-                <li>
-                    <div class="ta-course">Economics 101 <span class="ta-format">In-class course</span></div>
-                    <span class="ta-period" aria-label="Academic years 2021–2022, 2022–2023 and 2023–2024">2021–2024</span>
-                </li>
-            </ul>
-        </div>
+        <section class="teaching-lectures" id="lectures" aria-labelledby="lectures-heading">
+            <div class="teaching-section-heading"><div><p class="section-kicker">01 / Lectures &amp; short courses</p><h3 id="lectures-heading">In the classroom</h3></div><p>By year · Newest first</p></div>
+            <div class="teaching-years"><section class="teaching-year" aria-labelledby="teaching-2027">
+        <div class="teaching-year-label"><h4 id="teaching-2027">2027</h4><span class="teaching-scheduled">Upcoming</span></div>
+        <div class="teaching-year-content"><article class="lecture-entry" aria-labelledby="lecture-2027-1">
+            <p class="lecture-institution">Campus Economia Civile</p>
+            <h4 class="lecture-topic" id="lecture-2027-1">Game Theory, Cooperation, and Team Strategy</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Short course</span></div>
+        </article></div>
+    </section><section class="teaching-year" aria-labelledby="teaching-2026">
+        <div class="teaching-year-label"><h4 id="teaching-2026">2026</h4></div>
+        <div class="teaching-year-content"><article class="lecture-entry" aria-labelledby="lecture-2026-1">
+            <p class="lecture-institution">LUISS Guido Carli</p>
+            <h4 class="lecture-topic" id="lecture-2026-1">Behavioral Economics: game theory, asymmetric information, social norms, and behavioral policy design (Master&#x27;s course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">3 lectures</span></div>
+        </article><article class="lecture-entry" aria-labelledby="lecture-2026-2">
+            <p class="lecture-institution">University of Cagliari</p>
+            <h4 class="lecture-topic" id="lecture-2026-2">Social Preferences and Cooperation (Ph.D. course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">1 lecture</span><span class="teaching-tag">1 lab</span></div>
+        </article></div>
+    </section><section class="teaching-year" aria-labelledby="teaching-2025">
+        <div class="teaching-year-label"><h4 id="teaching-2025">2025</h4></div>
+        <div class="teaching-year-content"><article class="lecture-entry" aria-labelledby="lecture-2025-1">
+            <p class="lecture-institution">Summer School on Experimetrics &amp; Behavioral Economics</p>
+            <h4 class="lecture-topic" id="lecture-2025-1">Social Norms Evaluation (6h course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Short course</span></div>
+        </article><article class="lecture-entry" aria-labelledby="lecture-2025-2">
+            <p class="lecture-institution">University of Cagliari</p>
+            <h4 class="lecture-topic" id="lecture-2025-2">Social Preferences and Cooperation (Ph.D. course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
+        </article><article class="lecture-entry" aria-labelledby="lecture-2025-3">
+            <p class="lecture-institution">University of Cagliari</p>
+            <h4 class="lecture-topic" id="lecture-2025-3">Behavioral Economics: Nudge and nudging (Master course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
+        </article><article class="lecture-entry" aria-labelledby="lecture-2025-4">
+            <p class="lecture-institution">University of Cagliari</p>
+            <h4 class="lecture-topic" id="lecture-2025-4">Behavioral Public Policy for Public Administration (Master course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
+        </article></div>
+    </section><section class="teaching-year" aria-labelledby="teaching-2024">
+        <div class="teaching-year-label"><h4 id="teaching-2024">2024</h4></div>
+        <div class="teaching-year-content"><article class="lecture-entry" aria-labelledby="lecture-2024-1">
+            <p class="lecture-institution">Summer School on Experimetrics &amp; Behavioral Economics</p>
+            <h4 class="lecture-topic" id="lecture-2024-1">oTree Programming (6h course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Short course</span></div>
+        </article><article class="lecture-entry" aria-labelledby="lecture-2024-2">
+            <p class="lecture-institution">University of Cagliari</p>
+            <h4 class="lecture-topic" id="lecture-2024-2">Introduction to Game Theory (Microeconomics Course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
+        </article><article class="lecture-entry" aria-labelledby="lecture-2024-3">
+            <p class="lecture-institution">University of Cagliari</p>
+            <h4 class="lecture-topic" id="lecture-2024-3">Behavioral Public Policy for Public Administration (Master course)</h4>
+            <div class="teaching-tags"><span class="teaching-tag">Lecture</span></div>
+        </article></div>
+    </section></div>
+        </section>
+        <section aria-labelledby="assistant-heading" class="teaching-assistant" id="teaching-assistant"><p class="section-kicker">02 / Teaching support</p>
+<div class="ta-heading">
+<h3 id="assistant-heading">Teaching assistant</h3>
+<p>University of Cagliari</p>
+</div>
+<ul class="ta-courses">
+<li>
+<div class="ta-course">Microeconomics</div>
+<span aria-label="Academic years 2022–2023 and 2023–2024" class="ta-period">2022–2024</span>
+</li>
+<li>
+<div class="ta-course">Microeconomics <span class="ta-format">Blended course</span></div>
+<span aria-label="Academic years 2021–2022, 2022–2023 and 2023–2024" class="ta-period">2021–2024</span>
+</li>
+<li>
+<div class="ta-course">Economics 101 <span class="ta-format">In-class course</span></div>
+<span aria-label="Academic years 2021–2022, 2022–2023 and 2023–2024" class="ta-period">2021–2024</span>
+</li>
+</ul>
+</section>
     </div>
 
     </main>
