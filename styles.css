@@ -516,12 +516,13 @@ footer { margin-top: auto; padding: 3rem 0 1.5rem; color: rgba(255,255,255,.7); 
 .academic-chronology .timeline-detail { grid-template-columns: minmax(0, 1fr) auto; gap: .6rem 1.5rem; }
 .academic-chronology .timeline-detail + .timeline-detail { margin-top: 1.6rem; padding-top: 1.6rem; }
 .academic-chronology .timeline-detail strong { font: 500 clamp(1.35rem, 2.3vw, 1.6rem)/1.25 var(--display); }
-.academic-chronology .position-title { position: relative; display: flex; min-width: 0; align-items: center; gap: .6rem; }
+.academic-chronology .position-title { position: relative; display: flex; width: fit-content; max-width: 100%; align-items: center; gap: .6rem; }
 .academic-chronology .role-info { flex: 0 0 auto; }
-.academic-chronology .role-info summary { display: grid; width: 1.55rem; height: 1.55rem; place-items: center; border: 1px solid var(--blue); border-radius: 50%; color: var(--blue); font: 600 .85rem/1 var(--sans); list-style: none; cursor: pointer; transition: color .2s ease, background .2s ease; }
+.academic-chronology .role-info summary { display: grid; width: 1.5rem; height: 1.5rem; place-items: center; border: 1.5px solid var(--blue); border-radius: 50%; color: var(--blue); font: italic 600 1rem/1 var(--display); list-style: none; cursor: pointer; transition: color .2s ease, background .2s ease, transform .2s ease; }
 .academic-chronology .role-info summary::-webkit-details-marker { display: none; }
-.academic-chronology .role-info summary:hover, .academic-chronology .role-info[open] summary { color: var(--paper-bright); background: var(--blue); }
-.academic-chronology .role-info__popup { position: absolute; top: calc(100% + .65rem); left: 0; z-index: 20; width: min(24rem, calc(100vw - 3rem)); padding: 1rem 1.15rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper-bright); box-shadow: var(--shadow); }
+.academic-chronology .role-info summary:hover, .academic-chronology .role-info[open] summary { transform: scale(1.08); color: var(--paper-bright); background: var(--blue); }
+.academic-chronology .role-info__popup { position: absolute; top: calc(100% + .8rem); left: 0; z-index: 20; width: min(24rem, calc(100vw - 3rem)); padding: 1.1rem 1.25rem; border: 1px solid var(--line); border-radius: 18px 18px 18px 5px; background: var(--paper-bright); box-shadow: 0 16px 38px rgba(67,40,27,.18); }
+.academic-chronology .role-info__popup::before { position: absolute; top: -.48rem; left: min(13.5rem, calc(100% - 1.45rem)); width: .9rem; height: .9rem; transform: rotate(45deg); border-top: 1px solid var(--line); border-left: 1px solid var(--line); background: var(--paper-bright); content: ''; }
 .academic-chronology .role-info__popup p { font-size: .9rem; line-height: 1.65; }
 .academic-chronology .timeline-item:has(.role-info[open]) { z-index: 2; }
 .academic-chronology .timeline-period { max-width: 28ch; padding-top: .2rem; font: .9rem/1.55 var(--sans); }
