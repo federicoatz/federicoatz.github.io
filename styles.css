@@ -90,7 +90,7 @@ nav a:hover::after, nav a[aria-current='page']::after, .nav-tools summary:hover:
 .btn--primary:hover { color: #fff; background: var(--blue-dark); }
 .btn .arrow { transition: transform .25s var(--ease); }
 .btn:hover .arrow { transform: translate(.16rem, -.1rem); }
-.hero-identity { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; max-width: 42rem; margin-top: 2.4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: .9rem; line-height: 1.55; }
+.hero-identity { display: grid; grid-template-columns: 1fr; gap: 1.4rem; max-width: 42rem; margin-top: 2.4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: .9rem; line-height: 1.55; }
 .hero-identity p { color: var(--muted); }
 .hero-identity span { display: block; margin-bottom: .35rem; color: var(--ink); font: 600 .74rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 
